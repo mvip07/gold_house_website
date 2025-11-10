@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Gold House</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com" rel="preconnect" />
+        <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet" />
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script>
+            tailwind.config = {
+                darkMode: 'class',
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: '#aa7a4b',
+                            'background-light': '#fbfaf9',
+                            'background-dark': '#1d1915',
+                            'text-light': '#fbfaf9',
+                            'text-dark': '#181411',
+                            accent: '#c7a57a',
+                        },
+                        fontFamily: {
+                            display: ['Playfair Display', 'serif'],
+                            body: ['Cormorant Garamond', 'serif'],
+                            display2: ['Newsreader', 'sans-serif'],
+                            sans: ['Noto Sans', 'sans-serif'],
+                        },
+                        borderRadius: {
+                            DEFAULT: '0.25rem',
+                            lg: '0.5rem',
+                            xl: '0.75rem',
+                            full: '9999px',
+                        },
+                    },
+                },
+            }
+        </script>
+    </body>
+</html>
