@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Navbar() {
     return (
         <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f0edea] dark:border-b-[#2a2622] px-10 py-3">
@@ -11,31 +13,31 @@ export default function Navbar() {
             </div>
             <div class="flex flex-1 justify-end items-center gap-8">
                 <div class="flex items-center gap-9">
-                    <a class="text-[#181411] dark:text-white text-base font-medium leading-normal" href="/">
+                    <Link class="text-[#181411] dark:text-white text-base font-medium leading-normal" to="/">
                         Home
-                    </a>
-                    <a class="text-primary dark:text-primary text-base font-medium leading-normal" href="/about">
+                    </Link>
+                    <Link class="text-primary dark:text-primary text-base font-medium leading-normal" to="/about">
                         About Us
-                    </a>
-                    <a class="text-[#181411] dark:text-white text-base font-medium leading-normal" href="/collection">
+                    </Link>
+                    <Link class="text-[#181411] dark:text-white text-base font-medium leading-normal" to="/collection">
                         Collections
-                    </a>
-                    <a class="text-[#181411] dark:text-white text-base font-medium leading-normal" href="/contact">
+                    </Link>
+                    <Link class="text-[#181411] dark:text-white text-base font-medium leading-normal" to="/contact">
                         Contact
-                    </a>
+                    </Link>
                 </div>
                 <div class="flex items-center gap-2 border-l border-solid border-l-[#f0edea] dark:border-l-[#2a2622] pl-6">
-                    <a class="text-[#181411] dark:text-white text-base font-medium leading-normal" href="#">
+                    <Link class="text-[#181411] dark:text-white text-base font-medium leading-normal" to="#">
                         EN
-                    </a>
+                    </Link>
                     <span class="text-gray-300 dark:text-gray-600">/</span>
-                    <a class="text-gray-400 dark:text-gray-500 text-base font-medium leading-normal" href="#">
+                    <Link class="text-gray-400 dark:text-gray-500 text-base font-medium leading-normal" to="#">
                         UZ
-                    </a>
+                    </Link>
                     <span class="text-gray-300 dark:text-gray-600">/</span>
-                    <a class="text-gray-400 dark:text-gray-500 text-base font-medium leading-normal" href="#">
+                    <Link class="text-gray-400 dark:text-gray-500 text-base font-medium leading-normal" to="#">
                         RU
-                    </a>
+                    </Link>
                 </div>
             </div>
         </header>

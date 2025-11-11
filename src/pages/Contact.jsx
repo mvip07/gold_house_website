@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Contact() {
     return (
         <div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden" style={{fontFamily: '"Newsreader, "Noto Sans", sans-serif;'}}>
@@ -15,32 +17,32 @@ export default function Contact() {
                             </div>
                             <div class="hidden md:flex flex-1 justify-end items-center gap-8">
                                 <div class="flex items-center gap-9">
-                                    <a class="font-sans text-[#181411] dark:text-white text-sm font-medium leading-normal" href="/">
+                                    <Link class="font-sans text-[#181411] dark:text-white text-sm font-medium leading-normal" to="/">
                                         Home
-                                    </a>
-                                    <a class="font-sans text-[#181411] dark:text-white text-sm font-medium leading-normal" href="about">
+                                    </Link>
+                                    <Link class="font-sans text-[#181411] dark:text-white text-sm font-medium leading-normal" to="about">
                                         About Us
-                                    </a>
-                                    <a class="font-sans text-[#181411] dark:text-white text-sm font-medium leading-normal" href="/collection">
+                                    </Link>
+                                    <Link class="font-sans text-[#181411] dark:text-white text-sm font-medium leading-normal" to="/collection">
                                         Collections
-                                    </a>
-                                    <a class="font-sans text-primary text-sm font-medium leading-normal" href="/contact">
+                                    </Link>
+                                    <Link class="font-sans text-primary text-sm font-medium leading-normal" to="/contact">
                                         Contact
-                                    </a>
+                                    </Link>
                                 </div>
                                 <div class="flex items-center gap-4">
                                     <div class="flex items-center gap-2 border-l border-solid border-l-[#f0edea] dark:border-l-[#2a2622] pl-4">
-                                        <a class="font-sans text-[#181411] dark:text-white text-sm font-medium leading-normal" href="#">
+                                        <Link class="font-sans text-[#181411] dark:text-white text-sm font-medium leading-normal" to="#">
                                             EN
-                                        </a>
+                                        </Link>
                                         <span class="text-[#857360] dark:text-[#a19385]">/</span>
-                                        <a class="font-sans text-[#857360] dark:text-[#a19385] text-sm font-normal leading-normal" href="#">
+                                        <Link class="font-sans text-[#857360] dark:text-[#a19385] text-sm font-normal leading-normal" to="#">
                                             UZ
-                                        </a>
+                                        </Link>
                                         <span class="text-[#857360] dark:text-[#a19385]">/</span>
-                                        <a class="font-sans text-[#857360] dark:text-[#a19385] text-sm font-normal leading-normal" href="#">
+                                        <Link class="font-sans text-[#857360] dark:text-[#a19385] text-sm font-normal leading-normal" to="#">
                                             RU
-                                        </a>
+                                        </Link>
                                     </div>
                                     <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] font-sans">
                                         <span class="truncate">Login</span>
