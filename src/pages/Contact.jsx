@@ -83,7 +83,7 @@ export default function Contact() {
                             </div>
                         </main>
                         <footer className="border-t border-solid border-t-[#f0edea] dark:border-t-[#2a2622] px-4 sm:px-10 py-6 text-center">
-                            <p className="font-sans text-[#857360] dark:text-[#a19385] text-sm">© 2023 Gold House. All rights reserved.</p>
+                            <p className="font-sans text-[#857360] dark:text-[#a19385] text-sm">© 2025 MYB Team. All Rights Reserved.</p>
                         </footer>
                     </div>
                 </div>

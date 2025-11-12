@@ -15,30 +15,6 @@ export default function Certification() {
                                 </div>
                                
                             </div>
-                            <div className="px-4 py-3">
-                                <label className="flex flex-col min-w-40 h-12 w-full">
-                                    <div className="flex w-full flex-1 items-stretch rounded-lg h-full">
-                                        <div className="text-stone-500 dark:text-stone-400 flex border-none bg-stone-100 dark:bg-stone-800 items-center justify-center pl-4 rounded-l-lg border-r-0">
-                                            <span className="material-symbols-outlined">search</span>
-                                        </div>
-                                        <input className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-lg text-black dark:text-white focus:outline-0 focus:ring-0 border-none bg-stone-100 dark:bg-stone-800 focus:border-none h-full placeholder:text-stone-500 dark:placeholder-stone-400 px-4 pl-2 text-base font-normal leading-normal" placeholder="Search for certifications or patents" value="" />
-                                    </div>
-                                </label>
-                            </div>
-                            <div className="flex gap-3 p-3 overflow-x-auto">
-                                <button className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-stone-100 dark:bg-stone-800 pl-4 pr-2">
-                                    <p className="text-black dark:text-white text-sm font-medium leading-normal">All</p>
-                                    <span className="material-symbols-outlined text-black dark:text-white">expand_more</span>
-                                </button>
-                                <button className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-stone-100 dark:bg-stone-800 pl-4 pr-2">
-                                    <p className="text-black dark:text-white text-sm font-medium leading-normal">Quality Certifications</p>
-                                    <span className="material-symbols-outlined text-black dark:text-white">expand_more</span>
-                                </button>
-                                <button className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-stone-100 dark:bg-stone-800 pl-4 pr-2">
-                                    <p className="text-black dark:text-white text-sm font-medium leading-normal">Design Patents</p>
-                                    <span className="material-symbols-outlined text-black dark:text-white">expand_more</span>
-                                </button>
-                            </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
                                 <div className="flex flex-col gap-4 bg-background-light dark:bg-background-dark p-4 rounded-lg border border-stone-200 dark:border-stone-700">
                                     <div className="flex items-center gap-4">

@@ -57,7 +57,7 @@ export default function About() {
                                         </div>
                                         <span className="ml-3 text-xl font-display">Gold House</span>
                                     </Link>
-                                    <p className="text-sm text-gray-500 dark:text-gray-400 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 dark:sm:border-gray-700 sm:py-2 sm:mt-0 mt-4">© 2024 Gold House — All Rights Reserved</p>
+                                    <p className="text-sm text-gray-500 dark:text-gray-400 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 dark:sm:border-gray-700 sm:py-2 sm:mt-0 mt-4">© 2025 MYB Team. All Rights Reserved.</p>
                                     <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
                                         <Link to="" className="text-gray-500 dark:text-gray-400">
                                             <svg className="w-5 h-5" fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24">

@@ -136,13 +136,13 @@ export default function Story() {
                             </main>
                             <footer className="flex flex-col gap-6 px-5 py-10 text-center border-t border-solid border-t-[#f0edea] dark:border-t-[#2a2622] mt-16">
                                 <div className="flex flex-wrap items-center justify-center gap-6">
-                                    <Link className="text-[#857360] dark:text-gray-400 text-base font-normal leading-normal min-w-40 font-sans" to="#">
-                                        Terms of Service
+                                    <Link className="text-[#857360] dark:text-gray-400 text-base font-normal leading-normal min-w-40 font-sans" to="/">
+                                        Home
                                     </Link>
-                                    <Link className="text-[#857360] dark:text-gray-400 text-base font-normal leading-normal min-w-40 font-sans" to="#">
-                                        Privacy Policy
+                                    <Link className="text-[#857360] dark:text-gray-400 text-base font-normal leading-normal min-w-40 font-sans" to="/about">
+                                        About
                                     </Link>
-                                    <Link className="text-[#857360] dark:text-gray-400 text-base font-normal leading-normal min-w-40 font-sans" to="#">
+                                    <Link className="text-[#857360] dark:text-gray-400 text-base font-normal leading-normal min-w-40 font-sans" to="/contact">
                                         Contact Us
                                     </Link>
                                 </div>
@@ -157,7 +157,7 @@ export default function Story() {
                                         <span className="material-symbols-outlined text-[#857360] dark:text-gray-400">flutter_dash</span>
                                     </Link>
                                 </div>
-                                <p className="text-[#857360] dark:text-gray-400 text-base font-normal leading-normal font-sans">© 2023 Gold House. All Rights Reserved.</p>
+                                <p className="text-[#857360] dark:text-gray-400 text-base font-normal leading-normal font-sans">© 2025 MYB Team. All Rights Reserved.</p>
                             </footer>
                         </div>
                     </div>

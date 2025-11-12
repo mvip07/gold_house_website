@@ -118,17 +118,12 @@ export default function Collection() {
                                             <h3 className="font-bold text-lg text-[#1A1A1A] dark:text-white mb-4">Customer Service</h3>
                                             <ul className="space-y-2 text-sm">
                                                 <li>
-                                                    <Link className="text-gray-600 dark:text-gray-400 hover:text-primary" to="#">
-                                                        FAQ
-                                                    </Link>
-                                                </li>
-                                                <li>
-                                                    <Link className="text-gray-600 dark:text-gray-400 hover:text-primary" to="#">
+                                                    <Link className="text-gray-600 dark:text-gray-400 hover:text-primary" to="/collection">
                                                         Shipping &amp; Returns
                                                     </Link>
                                                 </li>
                                                 <li>
-                                                    <Link className="text-gray-600 dark:text-gray-400 hover:text-primary" to="#">
+                                                    <Link className="text-gray-600 dark:text-gray-400 hover:text-primary" to="/contact">
                                                         Contact Us
                                                     </Link>
                                                 </li>
@@ -138,18 +133,8 @@ export default function Collection() {
                                             <h3 className="font-bold text-lg text-[#1A1A1A] dark:text-white mb-4">About Us</h3>
                                             <ul className="space-y-2 text-sm">
                                                 <li>
-                                                    <Link className="text-gray-600 dark:text-gray-400 hover:text-primary" to="#">
+                                                    <Link className="text-gray-600 dark:text-gray-400 hover:text-primary" to="/story">
                                                         Our Story
-                                                    </Link>
-                                                </li>
-                                                <li>
-                                                    <Link className="text-gray-600 dark:text-gray-400 hover:text-primary" to="#">
-                                                        Careers
-                                                    </Link>
-                                                </li>
-                                                <li>
-                                                    <Link className="text-gray-600 dark:text-gray-400 hover:text-primary" to="#">
-                                                        Press
                                                     </Link>
                                                 </li>
                                             </ul>
@@ -175,7 +160,7 @@ export default function Collection() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="text-center text-gray-500 dark:text-gray-400 text-sm mt-8 pt-8 border-t border-gray-200 dark:border-gray-800">© 2023 Gold House. All Rights Reserved.</div>
+                                    <div className="text-center text-gray-500 dark:text-gray-400 text-sm mt-8 pt-8 border-t border-gray-200 dark:border-gray-800">© 2025 MYB Team. All Rights Reserved.</div>
                                 </footer>
                             </main>
                         </div>
