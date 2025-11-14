@@ -1,28 +1,27 @@
-import React, { useState, useMemo, useCallback, useEffect } from 'react'
+import React, { useState, useMemo, useCallback, useEffect, useContext } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import { getUserLanguage } from '../lib/getUserLanguage'
+import { LanguageContext } from '../context/LanguageContext'
 
 const LINK_CONFIG = [
-    { code: '1', to: '/' },
-    { code: '2', to: '/about' },
-    { code: '3', to: '/story' },
-    { code: '4', to: '/collection' },
-    { code: '5', to: '/certification' },
-    { code: '6', to: '/contact' },
+    { code: 'home', to: '/' },
+    { code: 'about', to: '/about' },
+    { code: 'store', to: '/story' },
+    { code: 'collection', to: '/collection' },
+    { code: 'certifications', to: '/certification' },
+    { code: 'contact_us', to: '/contact' },
 ]
 
 const Navbar = React.memo(function Navbar() {
+    const location = useLocation()
     const [isOpen, setIsOpen] = useState(false)
     const [links, setLinks] = useState(LINK_CONFIG.map((l) => ({ ...l, name: '...' })))
-    const [language, setLanguage] = useState(() => localStorage.getItem('lang') || 'UZ')
-    const location = useLocation()
+    const { language, changeLanguage } = useContext(LanguageContext);
 
-    useEffect(() => {
-        if (!localStorage.getItem('lang')) {
-            localStorage.setItem('lang', 'UZ')
-        }
-    }, [])
+    const handleLanguageChange = useCallback((e) => {
+        changeLanguage(e.target.value);
+    }, [changeLanguage]);
 
     useEffect(() => {
         let isMounted = true
@@ -40,7 +39,7 @@ const Navbar = React.memo(function Navbar() {
             } catch (error) {
                 console.error('Navigatsiya linklarini yuklashda xatolik:', error)
                 if (isMounted) {
-                    setLinks(LINK_CONFIG.map((l) => ({ ...l, name: 'Xato!' })))
+                    setLinks(LINK_CONFIG.map((l) => ({ ...l })))
                 }
             }
         }
@@ -49,14 +48,7 @@ const Navbar = React.memo(function Navbar() {
         return () => {
             isMounted = false
         }
-    }, [language]) // ✅ til o‘zgarsa qayta yuklaydi
-
-    // ✅ select o‘zgarsa
-    const handleLanguageChange = useCallback((e) => {
-        const selectedLang = e.target.value
-        localStorage.setItem('lang', selectedLang)
-        setLanguage(selectedLang)
-    }, [])
+    }, [language])
 
     const toggleMenu = useCallback(() => setIsOpen((prev) => !prev), [])
     const closeMenu = useCallback(() => setIsOpen(false), [])
@@ -67,7 +59,6 @@ const Navbar = React.memo(function Navbar() {
 
     return (
         <header className={headerClasses}>
-            {/* === LOGO === */}
             <div className="flex items-center gap-3">
                 <div className={`size-6 ${iconColorClass}`}>
                     <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
@@ -77,7 +68,6 @@ const Navbar = React.memo(function Navbar() {
                 <h2 className={`text-xl font-bold font-display ${iconColorClass}`}>Gold House</h2>
             </div>
 
-            {/* === NAV LINKS === */}
             <nav className="hidden lg:flex items-center gap-8">
                 {links.map((link) => (
                     <NavLink key={link.to} to={link.to} className={({ isActive }) => `font-medium text-base transition-colors ${isActive ? 'text-primary border-b-2 border-primary pb-1' : `${isHome ? 'text-white' : 'text-black'} hover:text-primary`}`}>
@@ -86,7 +76,6 @@ const Navbar = React.memo(function Navbar() {
                 ))}
             </nav>
 
-            {/* === LANGUAGE SELECT === */}
             <div className={`hidden lg:flex items-center gap-2 pl-6 ${!isHome ? 'border-l border-[#f0edea]' : ''}`}>
                 <select value={language} onChange={handleLanguageChange} className={`outline-none border-0 text-base font-medium ${isHome ? 'text-white bg-transparent' : 'text-black'}`}>
                     <option value="EN">EN</option>
@@ -95,12 +84,10 @@ const Navbar = React.memo(function Navbar() {
                 </select>
             </div>
 
-            {/* === MOBILE MENU BUTTON === */}
             <button onClick={toggleMenu} className={`${iconColorClass} lg:hidden`}>
                 {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
 
-            {/* === MOBILE MENU === */}
             {isOpen && (
                 <div className="fixed top-0 left-0 w-full h-screen bg-black/50 dark:bg-white/20 flex flex-col items-start p-4 gap-4 lg:hidden backdrop-blur-sm animate-fadeIn">
                     {links.map((link) => (

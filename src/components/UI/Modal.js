@@ -19,8 +19,8 @@ export const useModal = () => useContext(ModalContext)
 
 const Modal = ({ type, formId, title, btnTitle, content, closeModal }) => {
     return (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div className="bg-white p-6 rounded-2xl shadow-2xl max-w-md w-full">
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 backdrop-blur-sm">
+            <div className="bg-white h-[450px] overflow-y-auto scroll-none rounded-2xl w-full max-w-2xl shadow-2xl p-6">
                 <h2 className="text-2xl font-bold mb-4">{title}</h2>
                 {content}
                 <div className="flex justify-end gap-4 mt-6">

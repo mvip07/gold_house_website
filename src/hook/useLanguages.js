@@ -1,8 +1,7 @@
-'use client'
 import { useState, useCallback, useEffect } from 'react'
-import { toast } from 'react-toastify'
 import { languageService } from '../services/languageService'
 import { handleApiError } from '../lib/helpers/handleApiError'
+import { notify } from '../lib/toastify'
 
 export const useLanguages = () => {
     const [loading, setLoading] = useState(false)
@@ -37,7 +36,7 @@ export const useLanguages = () => {
             try {
                 await languageService.create(language)
                 fetchLanguages()
-                toast.success('Language yaratildi!')
+                notify('success', 'Language yaratildi!')
             } catch (err) {
                 handleApiError(err, 'Language yaratishda xatolik!')
             } finally {
@@ -54,7 +53,7 @@ export const useLanguages = () => {
             try {
                 await languageService.update(id, language)
                 fetchLanguages()
-                toast.success('Language yangilandi!')
+                notify('success', 'Language yangilandi!')
             } catch (err) {
                 handleApiError(err, 'Language yangilashda xatolik!')
             } finally {
@@ -70,7 +69,7 @@ export const useLanguages = () => {
             try {
                 await languageService.delete(id)
                 fetchLanguages()
-                toast.success("Language o'chirildi!")
+                notify('success', "Language o'chirildi!")
             } catch (err) {
                 handleApiError(err, "Language o'chirishda xatolik!")
             } finally {
@@ -104,6 +103,6 @@ export const useLanguages = () => {
         handleUpdate,
         handleDelete,
         fetchLanguages,
-        getUserLanguage
+        getUserLanguage,
     }
 }

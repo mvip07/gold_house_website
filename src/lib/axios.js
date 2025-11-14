@@ -37,12 +37,12 @@ API.interceptors.response.use(
     (error) => {
         if (error.response && error.response.status === 401) {
             const currentPath = typeof window !== 'undefined' ? window.location.pathname : ''
-            if (currentPath.startsWith('/auth/login')) {
+            if (currentPath.startsWith('/admin')) {
                 return Promise.reject(error)
             }
             clearToken()
             if (typeof window !== 'undefined') {
-                window.location.href = '/auth/login'
+                window.location.href = '/admin'
             }
             return Promise.reject(error)
         }

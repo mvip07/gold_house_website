@@ -1,7 +1,71 @@
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
+import { useProducts } from '../hook/useProducts'
+import { useEffect, useState, useMemo, useContext } from 'react'
+import { getUserLanguage } from '../lib/getUserLanguage'
+import { useCertificates } from '../hook/useCertificates'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { LanguageContext } from '../context/LanguageContext'
+
+const HOME_TEXT_CONFIG = [
+    { code: 'elegance_title', default: 'Elegance in Every Detail' },
+    { code: 'elegance_description', default: 'Discover the timeless beauty of handcrafted gold jewelry, where tradition meets modern luxury.' },
+    { code: 'explore_collections', default: 'Explore Our Collections' },
+    { code: 'legacy_title', default: 'A Legacy of Craftsmanship' },
+    { code: 'legacy_description', default: 'For over three decades, Gold House has been synonymous with exceptional quality and artistry. We are a family-owned business dedicated to preserving the ancient craft of goldsmithing while embracing contemporary design.' },
+    { code: 'learn_more_about_us', default: 'Learn More About Us' },
+    { code: 'certified_excellence', default: 'Certified Excellence' },
+    { code: 'our_journey_through_time', default: 'Our Journey Through Time' },
+    { code: 'the_beginning', default: 'The Beginning' },
+    { code: 'founder_workshop', default: 'Our founder opens a small workshop with a vision to create extraordinary jewelry.' },
+    { code: 'first_award', default: 'First International Award' },
+    { code: 'best_design', default: 'Recognition for "Best Design" at the Paris International Jewelry Fair.' },
+    { code: 'embracing_future', default: 'Embracing the Future' },
+    { code: 'ecommerce_launch', default: 'Launch of our e-commerce platform, bringing Gold House to the world.' },
+    { code: 'create_legacy_title', default: 'Create Your Own Legacy' },
+    { code: 'create_legacy_description', default: 'Contact us for a private consultation or to discuss a bespoke commission.' },
+    { code: 'get_in_touch', default: 'Get in Touch' },
+    { code: 'featured_collections_title', default: 'Featured Collections' },
+    { code: 'featured_collections_description', default: 'Each piece is a testament to our commitment to excellence, designed to be cherished for generations.' },
+]
 
 export default function Home() {
+    const { products } = useProducts()
+    const { certificates } = useCertificates()
+    const { language } = useContext(LanguageContext)
+    const [texts, setTexts] = useState(HOME_TEXT_CONFIG.map((t) => ({ ...t, text: t.default })))
+
+    useEffect(() => {
+        let isMounted = true
+
+        const fetchTexts = async () => {
+            try {
+                const loaded = await Promise.all(
+                    HOME_TEXT_CONFIG.map(async (item) => {
+                        const text = await getUserLanguage(language, item.code)
+                        return { ...item, text: text || item.default }
+                    })
+                )
+
+                if (isMounted) setTexts(loaded)
+            } catch (error) {
+                console.error('Home matnlarini yuklashda xatolik:', error)
+            }
+        }
+
+        fetchTexts()
+        return () => {
+            isMounted = false
+        }
+    }, [language])
+
+    const textMap = useMemo(() => {
+        return texts.reduce((acc, { code, text }) => {
+            acc[code] = text
+            return acc
+        }, {})
+    }, [texts])
+
     return (
         <div className="bg-background-light dark:bg-background-dark text-text-dark dark:text-text-light">
             <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden">
@@ -9,24 +73,24 @@ export default function Home() {
                 <main className="flex-grow">
                     <section className="relative h-screen w-full">
                         <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
-                        <video autoplay="" className="absolute inset-0 w-full h-full object-cover" loop="" muted="" poster="https://lh3.googleusercontent.com/aida-public/AB6AXuDAm9Gj_otxzApREx4mI_bp5EOk8KqX7Ml7J9U_8FtuYkG0qoEIOY8uVfAkug-kXDwYqLppV7S2bXN3BILtKmepgxlnA67jrmmeS0QSZMKUgm2DvlOXDkudQ5BY6-NQQNFSkaCf48tiqDxet8xSb_iieRthNIjGUOigmJUdW8g4FOUdWDf19_HZ26SAKSqvjOneOwBEt1UaHEkINFp2mfGfxuVmtrwkojQ88aXH-4oblLVgcVcZZ-bW8mkrK4N8hbkRI5fZHXICbA">
-                            <source src="https://assets.mixkit.co/videos/preview/mixkit-Link-goldsmith-working-in-his-workshop-2387-large.mp4" type="video/mp4" />
+                        <video autoPlay className="absolute inset-0 w-full h-full object-cover" loop muted poster="https://lh3.googleusercontent.com/aida-public/AB6AXuDAm9Gj_otxzApREx4mI_bp5EOk8KqX7Ml7J9U_8FtuYkG0qoEIOY8uVfAkug-kXDwYqLppV7S2bXN3BILtKmepgxlnA67jrmmeS0QSZMKUgm2DvlOXDkudQ5BY6-NQQNFSkaCf48tiqDxet8xSb_iieRthNIjGUOigmJUdW8g4FOUdWDf19_HZ26SAKSqvjOneOwBEt1UaHEkINFp2mfGfxuVmtrwkojQ88aXH-4oblLVgcVcZZ-bW8mkrK4N8hbkRI5fZHXICbA">
+                            <source src="https://assets.mixkit.co/videos/preview/mixkit-a-goldsmith-working-in-his-workshop-2387-large.mp4" type="video/mp4" />
                         </video>
                         <div className="relative z-20 flex flex-col items-center justify-center h-full text-center text-white px-4">
-                            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold mb-4">Elegance in Every Detail</h1>
-                            <p className="font-body text-xl md:text-2xl max-w-2xl mb-8">Discover the timeless beauty of handcrafted gold jewelry, where tradition meets modern luxury.</p>
+                            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold mb-4">{textMap['elegance_title']}</h1>
+                            <p className="font-body text-xl md:text-2xl max-w-2xl mb-8">{textMap['elegance_description']}</p>
                             <Link className="px-8 py-3 bg-accent text-white font-bold text-lg rounded-full hover:bg-opacity-80 transition-all duration-300" to="#products">
-                                Explore Our Collections
+                                {textMap['explore_collections']}
                             </Link>
                         </div>
                     </section>
                     <section className="py-20 lg:py-32 bg-background-light dark:bg-background-dark" id="about">
                         <div className="container mx-auto px-4 lg:px-20 grid lg:grid-cols-2 gap-12 items-center">
                             <div className="text-center lg:text-left">
-                                <h2 className="font-display text-4xl lg:text-5xl font-bold mb-6 text-text-dark dark:text-text-light">A Legacy of Craftsmanship</h2>
-                                <p className="font-body text-lg lg:text-xl text-gray-700 dark:text-gray-300 mb-8">For over three decades, Gold House has been synonymous with exceptional quality and artistry. We are Link family-owned business dedicated to preserving the ancient craft of goldsmithing while embracing contemporary design.</p>
+                                <h2 className="font-display text-4xl lg:text-5xl font-bold mb-6 text-text-dark dark:text-text-light">{textMap['legacy_title']}</h2>
+                                <p className="font-body text-lg lg:text-xl text-gray-700 dark:text-gray-300 mb-8">{textMap['legacy_description']}</p>
                                 <Link className="inline-block px-8 py-3 border border-accent text-accent font-bold text-lg rounded-full hover:bg-accent hover:text-white transition-all duration-300" to="#">
-                                    Learn More About Us
+                                    {textMap['learn_more_about_us']}
                                 </Link>
                             </div>
                             <div>
@@ -37,57 +101,52 @@ export default function Home() {
                     <section className="py-20 lg:py-32 bg-gray-50 dark:bg-gray-900" id="products">
                         <div className="container mx-auto px-4 lg:px-20">
                             <div className="text-center mb-16">
-                                <h2 className="font-display text-4xl lg:text-5xl font-bold text-text-dark dark:text-text-light">Featured Collections</h2>
-                                <p className="font-body text-lg lg:text-xl text-gray-700 dark:text-gray-300 mt-4 max-w-2xl mx-auto">Each piece is Link testament to our commitment to excellence, designed to be cherished for generations.</p>
+                                <h2 className="font-display text-4xl lg:text-5xl font-bold text-text-dark dark:text-text-light">{textMap['featured_collections_title']}</h2>
+                                <p className="font-body text-lg lg:text-xl text-gray-700 dark:text-gray-300 mt-4 max-w-2xl mx-auto">{textMap['featured_collections_description']}</p>
                             </div>
-                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                <div className="group">
-                                    <div className="overflow-hidden rounded-xl">
-                                        <img alt="Elegant gold necklace" className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDypG8aC98i-sble8NdizU9SwF5uSYzk585DPbEb4LoaQw2jIqUokqIAdfT1d7CKCu1YHLU1xJ_ZwXC06VQ8bBm2JQuMGybKEC_-H5muOUeHjJP4hORgrdvwKLtOn9fQhGfU_bdax9AYtPSP1V03H3vCVNuAOet_r5vyTKu8Ipqhq6xAMIFSXCT0lv6QrxSYJY93GgH5nb8RAyh80LWAOPwJ4Qk2-A5ITKEC0XhsXJR8BV-XMQrH2S7ziJQYHK3YTK0GkskR1ksRw" />
+                            <div className="relative">
+                                <div className="overflow-hidden">
+                                    <div className="flex overflow-x-auto scroll-none snap-x snap-mandatory scrollbar-hide gap-4 pb-4">
+                                        {products &&
+                                            products.map((p) => (
+                                                <div key={p.id} className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 snap-center">
+                                                    <div className="group">
+                                                        <div className="overflow-hidden rounded-xl">
+                                                            <img alt="Elegant gold necklace" className="w-full h-72 object-cover transform group-hover:scale-105 transition-transform duration-500" src={p.image_path} />
+                                                        </div>
+                                                        <h3 className="font-display text-2xl font-bold mt-4 text-text-dark dark:text-text-light">{p.title}</h3>
+                                                        <p className="font-body text-gray-600 dark:text-gray-400">{p.description}</p>
+                                                    </div>
+                                                </div>
+                                            ))}
                                     </div>
-                                    <h3 className="font-display text-2xl font-bold mt-4 text-text-dark dark:text-text-light">The Heritage Collection</h3>
-                                    <p className="font-body text-gray-600 dark:text-gray-400">Timeless designs inspired by our rich history.</p>
                                 </div>
-                                <div className="group">
-                                    <div className="overflow-hidden rounded-xl">
-                                        <img alt="Modern gold ring" className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDu0bdKPizodbEH-Mzr36LIPLe0ThVmKqnWL20DfmN8MvaCYDBeHzb0Pr5lx6BZE8gg1vVI7xI3gHTbOXTcAly5kz7OrNW89mysAdEE-f1Uj6VFFj59J_RaLEOUweq0lZVPw_6f9qFSfIAdXwgC60xW9jMTrpTgkNMkfNqvBip94on5eJ6lIabG-jc1OrpOTvGNcVNuffDwKlrpYzb1wC2JudNMOAsWwvJu1n-iYyklghzt3cSncDWB_a8OyM9bBmRO6_z1a-Q1DA" />
-                                    </div>
-                                    <h3 className="font-display text-2xl font-bold mt-4 text-text-dark dark:text-text-light">The Modernist Collection</h3>
-                                    <p className="font-body text-gray-600 dark:text-gray-400">Clean lines and bold shapes for the contemporary connoisseur.</p>
-                                </div>
-                                <div className="group">
-                                    <div className="overflow-hidden rounded-xl">
-                                        <img alt="Bespoke gold earrings" className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCB-ja7_vtHbbH-NzyBgE0KIOGRbARfPvJ5WjxEvFZxj4nJrW6eEcDRojq2L1MUN_PrSUMGTM_Ixt0HmecL_eMXacKOgaOTVdKdQ2g0AlYSzk-AlKAdotlf_4tmdbfrGgRsBvMkdJXKnZ-O45leky1Ov9JahcU6MfyYreKN5aYnN1GkbFZMc94DgoGM-T1hnLn1xcsENZtd8g3q6cmHBsYclfofh21nyrr61N9IoLsdqYR6M_5OYlgVH5Z44C7ryV97JKWql3Vu5w" />
-                                    </div>
-                                    <h3 className="font-display text-2xl font-bold mt-4 text-text-dark dark:text-text-light">The Bespoke Collection</h3>
-                                    <p className="font-body text-gray-600 dark:text-gray-400">Your unique story, captured in gold.</p>
-                                </div>
+                                <button className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-black/50 p-2 rounded-full" onClick={() => document.querySelector('.overflow-x-auto').scrollBy({ left: -300, behavior: 'smooth' })}>
+                                    <ChevronLeft className="text-black dark:text-white" />
+                                </button>
+                                <button className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/50 dark:bg-black/50 p-2 rounded-full" onClick={() => document.querySelector('.overflow-x-auto').scrollBy({ left: 300, behavior: 'smooth' })}>
+                                    <ChevronRight className="text-black dark:text-white" />
+                                </button>
                             </div>
                         </div>
                     </section>
                     <section className="py-20 lg:py-32 bg-background-light dark:bg-background-dark" id="certificates">
                         <div className="container mx-auto px-4 lg:px-20 text-center">
-                            <h2 className="font-display text-4xl lg:text-5xl font-bold mb-16 text-text-dark dark:text-text-light">Certified Excellence</h2>
+                            <h2 className="font-display text-4xl lg:text-5xl font-bold mb-16 text-text-dark dark:text-text-light">{textMap['certified_excellence']}</h2>
                             <div className="flex flex-wrap justify-center items-center gap-12 lg:gap-20">
-                                <div className="flex flex-col items-center">
-                                    <img alt="Certificate 1" className="h-48 w-auto opacity-80 hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbNCejHFPaDxi0aMOd1_5pMBlff8AlpURpQO-YWGo4_EJKdz5ZWJ7o2tfbIvlG72fyKwAy4WSB5TReQQKGTI1ZvpQzkOanfbsjlb0U40Yp75PkPC-KSBQzP4W_hKhAYtdo8_OkmC6s9QVHWi8bugCVpV5po3Qpk-7D4TGnf_PnpnbptJr3OkpPHzTkhYFqZi35q--zOvJbosIwxnMigOxnrzjKRvCc3qM5I1ATls2thsWbBKDGRsvKSFYtLFISWvpKYj01riyaBQ" />
-                                    <p className="font-body text-lg mt-2 text-gray-600 dark:text-gray-400">ISO 9001:2015</p>
-                                </div>
-                                <div className="flex flex-col items-center">
-                                    <img alt="Certificate 2" className="h-48 w-auto opacity-80 hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCflowb4_W_N1juydMIptaOIuk9rCNwMehW_ZtujrTAZuEqQkTk_PnWs4L5dvhn7ZnYKLYN1R9rrh-KjS-flOApVoJaCvM72fltuVg070gxKZY1a3srcur8bFyEf1MfaZxMLaz2Dzpfi54CykDNoruxVt7ehYfGV8zX9hwHK4OcJl5BVYKBtdKCJm1Q8eAt3NztJGF72mfog5D0BNW3hUYvNxfBNveixtcrQ-hkYd5YzyR2lmDN7T7izbTfp-qw7Y1dFT8b6GGmiA" />
-                                    <p className="font-body text-lg mt-2 text-gray-600 dark:text-gray-400">Hallmark Certified Gold</p>
-                                </div>
-                                <div className="flex flex-col items-center">
-                                    <img alt="Patent document" className="h-48 w-auto opacity-80 hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3eIexWBQ4YzxMCQvxyuaaXPinstdK1KF5zSO5r06WFcxo20xgl5P6_r-UPVJxce7K_r1gAX8wbG_fxAdCJijC4XXkb1pXbTc3PCVGxkB7iS50SDXMvdBW0PkQOsslF52x1ZWaJo69oosWq-nXPW103w8Obst4joScN96axRDDB-ogQDrG2rDM1Avnmzf5p_4hsWfeIG5coOQS5J6v7cp8fXV-_mh7xPbgjhWxgppVsNuwHXu0ZhjnNr0qzyfV43hcruQdigHdXQ" />
-                                    <p className="font-body text-lg mt-2 text-gray-600 dark:text-gray-400">Patented Clasp Design</p>
-                                </div>
+                                {certificates.slice(0, 2).map((c) => (
+                                    <div key={c.id} className="flex flex-col items-center">
+                                        <img alt="Certificate 1" className="h-48 w-auto opacity-80 hover:opacity-100 transition-opacity" src={c.file_path} />
+                                        <p className="font-body text-lg mt-2 text-gray-600 dark:text-gray-400">{c.title}</p>
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     </section>
                     <section className="py-20 lg:py-32 bg-gray-50 dark:bg-gray-900" id="story">
                         <div className="container mx-auto px-4 lg:px-20">
                             <div className="text-center mb-16">
-                                <h2 className="font-display text-4xl lg:text-5xl font-bold text-text-dark dark:text-text-light">Our Journey Through Time</h2>
+                                <h2 className="font-display text-4xl lg:text-5xl font-bold text-text-dark dark:text-text-light">{textMap['our_journey_through_time']}</h2>
                             </div>
                             <div className="relative">
                                 <div className="absolute left-1/2 h-full w-0.5 bg-accent/30 hidden md:block"></div>
@@ -95,8 +154,8 @@ export default function Home() {
                                     <div className="md:flex items-center md:gap-8 w-full">
                                         <div className="md:w-1/2 md:text-right md:pr-8">
                                             <p className="font-display text-3xl font-bold text-accent">1988</p>
-                                            <h3 className="font-display text-2xl font-semibold my-2 text-text-dark dark:text-text-light">The Beginning</h3>
-                                            <p className="font-body text-lg text-gray-700 dark:text-gray-300">Our founder opens Link small workshop with Link vision to create extraordinary jewelry.</p>
+                                            <h3 className="font-display text-2xl font-semibold my-2 text-text-dark dark:text-text-light">{textMap['the_beginning']}</h3>
+                                            <p className="font-body text-lg text-gray-700 dark:text-gray-300">{textMap['founder_workshop']}</p>
                                         </div>
                                         <div className="hidden md:block w-8 h-8 rounded-full bg-accent ring-8 ring-gray-50 dark:ring-gray-900 z-10"></div>
                                         <div className="md:w-1/2 md:pl-8 mt-4 md:mt-0"></div>
@@ -104,8 +163,8 @@ export default function Home() {
                                     <div className="md:flex flex-row-reverse items-center md:gap-8 w-full">
                                         <div className="md:w-1/2 md:text-left md:pl-8">
                                             <p className="font-display text-3xl font-bold text-accent">2005</p>
-                                            <h3 className="font-display text-2xl font-semibold my-2 text-text-dark dark:text-text-light">First International Award</h3>
-                                            <p className="font-body text-lg text-gray-700 dark:text-gray-300">Recognition for "Best Design" at the Paris International Jewelry Fair.</p>
+                                            <h3 className="font-display text-2xl font-semibold my-2 text-text-dark dark:text-text-light">{textMap['first_award']}</h3>
+                                            <p className="font-body text-lg text-gray-700 dark:text-gray-300">{textMap['best_design']}</p>
                                         </div>
                                         <div className="hidden md:block w-8 h-8 rounded-full bg-accent ring-8 ring-gray-50 dark:ring-gray-900 z-10"></div>
                                         <div className="md:w-1/2 md:pr-8 mt-4 md:mt-0"></div>
@@ -113,8 +172,8 @@ export default function Home() {
                                     <div className="md:flex items-center md:gap-8 w-full">
                                         <div className="md:w-1/2 md:text-right md:pr-8">
                                             <p className="font-display text-3xl font-bold text-accent">2020</p>
-                                            <h3 className="font-display text-2xl font-semibold my-2 text-text-dark dark:text-text-light">Embracing the Future</h3>
-                                            <p className="font-body text-lg text-gray-700 dark:text-gray-300">Launch of our e-commerce platform, bringing Gold House to the world.</p>
+                                            <h3 className="font-display text-2xl font-semibold my-2 text-text-dark dark:text-text-light">{textMap['embracing_future']}</h3>
+                                            <p className="font-body text-lg text-gray-700 dark:text-gray-300">{textMap['ecommerce_launch']}</p>
                                         </div>
                                         <div className="hidden md:block w-8 h-8 rounded-full bg-accent ring-8 ring-gray-50 dark:ring-gray-900 z-10"></div>
                                         <div className="md:w-1/2 md:pl-8 mt-4 md:mt-0"></div>
@@ -125,10 +184,10 @@ export default function Home() {
                     </section>
                     <section className="py-20 lg:py-32 bg-cover bg-center" id="contact" style={{ backgroundImage: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("image-f77977a414964648937000e3952f1e68")' }}>
                         <div className="container mx-auto px-4 lg:px-20 text-center">
-                            <h2 className="font-display text-4xl lg:text-5xl font-bold text-white">Create Your Own Legacy</h2>
-                            <p className="font-body text-xl text-gray-300 mt-4 max-w-2xl mx-auto">Contact us for Link private consultation or to discuss Link bespoke commission.</p>
+                            <h2 className="font-display text-4xl lg:text-5xl font-bold text-white">{textMap['create_legacy_title']}</h2>
+                            <p className="font-body text-xl text-gray-300 mt-4 max-w-2xl mx-auto">{textMap['create_legacy_description']}</p>
                             <Link className="mt-8 inline-block px-10 py-4 bg-accent text-white font-bold text-lg rounded-full hover:bg-opacity-80 transition-all duration-300" to="#">
-                                Get in Touch
+                                {textMap['get_in_touch']}
                             </Link>
                         </div>
                     </section>

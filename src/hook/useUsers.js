@@ -1,8 +1,7 @@
-'use client'
 import { useState, useCallback, useEffect } from 'react'
-import { toast } from 'react-toastify'
 import { userService } from '../services/userService'
-import { handleApiError } from '../lib/helpers/handleApiError' 
+import { handleApiError } from '../lib/helpers/handleApiError'
+import { notify } from '../lib/toastify'
 
 export const useUsers = () => {
     const [loading, setLoading] = useState(false)
@@ -37,7 +36,7 @@ export const useUsers = () => {
             try {
                 await userService.create(user)
                 fetchUsers()
-                toast.success('User yaratildi!')
+                notify('success', 'User yaratildi!')
             } catch (err) {
                 handleApiError(err, 'User yaratishda xatolik!')
             } finally {
@@ -54,7 +53,7 @@ export const useUsers = () => {
             try {
                 await userService.update(id, user)
                 fetchUsers()
-                toast.success('User yangilandi!')
+                notify('success', 'User yangilandi!')
             } catch (err) {
                 handleApiError(err, 'User yangilashda xatolik!')
             } finally {
@@ -70,7 +69,7 @@ export const useUsers = () => {
             try {
                 await userService.delete(id)
                 fetchUsers()
-                toast.success("User o'chirildi!")
+                notify('success', "User o'chirildi!")
             } catch (err) {
                 handleApiError(err, "User o'chirishda xatolik!")
             } finally {

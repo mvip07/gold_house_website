@@ -1,7 +1,13 @@
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
+import { useProducts } from '../hook/useProducts'
+import { useState } from 'react'
 
 export default function Collection() {
+    const { products } = useProducts()
+    const [selectTypes, setSelectedTypes] = useState('')
+    const typesCategory = [...new Set(products.map((p) => p.type))]
+
     return (
         <div className="bg-background-light dark:bg-background-dark font-display text-[#1A1A1A] dark:text-white">
             <div className="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
@@ -14,99 +20,29 @@ export default function Collection() {
                                     <p className="text-[#1A1A1A] dark:text-white text-5xl font-bold leading-tight tracking-[-0.033em] min-w-72">Our Exquisite Collection</p>
                                 </div>
                                 <div className="flex gap-3 p-3 overflow-x-auto">
-                                    <button className="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-background-light dark:bg-background-dark border dark:border-gray-700 pl-4 pr-3 hover:bg-primary/10 dark:hover:bg-primary/20">
-                                        <p className="text-[#1A1A1A] dark:text-white text-sm font-medium leading-normal">Rings</p>
-                                        <span className="material-symbols-outlined text-sm">expand_more</span>
-                                    </button>
-                                    <button className="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-background-light dark:bg-background-dark border dark:border-gray-700 pl-4 pr-3 hover:bg-primary/10 dark:hover:bg-primary/20">
-                                        <p className="text-[#1A1A1A] dark:text-white text-sm font-medium leading-normal">Necklaces</p>
-                                        <span className="material-symbols-outlined text-sm">expand_more</span>
-                                    </button>
-                                    <button className="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-background-light dark:bg-background-dark border dark:border-gray-700 pl-4 pr-3 hover:bg-primary/10 dark:hover:bg-primary/20">
-                                        <p className="text-[#1A1A1A] dark:text-white text-sm font-medium leading-normal">Bracelets</p>
-                                        <span className="material-symbols-outlined text-sm">expand_more</span>
-                                    </button>
-                                    <button className="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-background-light dark:bg-background-dark border dark:border-gray-700 pl-4 pr-3 hover:bg-primary/10 dark:hover:bg-primary/20">
-                                        <p className="text-[#1A1A1A] dark:text-white text-sm font-medium leading-normal">Earrings</p>
-                                        <span className="material-symbols-outlined text-sm">expand_more</span>
-                                    </button>
+                                    <select onChange={(e) => setSelectedTypes(e.target.value)} className="rounded-lg bg-background-light dark:bg-background-dark border dark:border-gray-700 p-3 hover:bg-primary/10 dark:hover:bg-primary/20" name="" id="">
+                                        <option value="">--Select Type--</option>
+                                        {typesCategory.map((t) => (
+                                            <option value={t}>{t}</option>
+                                        ))}
+                                    </select>
                                 </div>
-                                <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-8 p-4">
-                                    <div className="flex flex-col gap-4 pb-3 group">
-                                        <div className="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl shadow-md overflow-hidden transform group-hover:scale-105 transition-transform duration-300" data-alt="The Aurelia Sunburst Ring" style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuAFKUvXYbucNWz3WzD7T2wXI_qxB5FvnE6wiF42OoPuWSHC89OUZqFfdtXIftk3dY-Qq0Z2OzU4Sls5QP37O5B8-Asgoeb1WnS3v48ahIzaspu4KvWaSMDM7NO8kBnSr5GZi5S5lYFbWfJJcOm2WJpK0_V8Hkix6-Fn7peUPzNhSErKN91YHP68RBawo4HyZksx6_9PuExKYTNPNOSbMPg7sW0J7rxUbbXZeVxQCxDibq9iCxg135XmoxKhSiQ1q1LFa_o16fzN6g")' }}></div>
-                                        <div>
-                                            <p className="text-primary text-xl font-bold leading-normal">The Aurelia Sunburst Ring</p>
-                                            <p className="text-gray-600 dark:text-gray-400 text-sm font-normal leading-normal">Crafted in 18k yellow gold with a brilliant-cut diamond</p>
-                                            <button className="mt-2 text-primary font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">View Details</button>
-                                        </div>
-                                    </div>
-                                    <div className="flex flex-col gap-4 pb-3 group">
-                                        <div className="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl shadow-md overflow-hidden transform group-hover:scale-105 transition-transform duration-300" data-alt="Eternity Weave Necklace" style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuBAMYumvvseTxahIxTqarYw4lTPTssXTL1O2AT1v31VjSfW8ni_-Mf3NvUIQ-DWMmGW3zeYzOrnCo7BbCidhXXTp-qS01DpIjOo5_yrpc0OHgfVaf7Df67oTRBIFxgheQ4BA4Sm6sPgGTelpgMzJwpEMEzeRW3KXiOyy0pbTYmUg0iQsifoL1eBMQhiM3FWkALeHT9DSaYDQeEVj8ZPIbbe68314sai0D_uX_k-jLXMnt_BDHq1_tnRHW2QrtOhklkhpfoZgIrQNA")' }}></div>
-                                        <div>
-                                            <p className="text-primary text-xl font-bold leading-normal">Eternity Weave Necklace</p>
-                                            <p className="text-gray-600 dark:text-gray-400 text-sm font-normal leading-normal">An intricate design inspired by classNameic Roman artistry</p>
-                                            <button className="mt-2 text-primary font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">View Details</button>
-                                        </div>
-                                    </div>
-                                    <div className="flex flex-col gap-4 pb-3 group">
-                                        <div className="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl shadow-md overflow-hidden transform group-hover:scale-105 transition-transform duration-300" data-alt="Solitaire Diamond Studs" style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuCd3WXM5qCl4-Do_W5dfY07Im5BnovvWu4BMo0n1oYO7DT1kQ1DKaQnwbS9IhN7sBVOakTz6gtKb3FP_58rXNPXeQG-vEpKu7WYnSsukNQYHATeeAh70AbxvCn--catfmfDKYNtJu2_gpGtZcgoBCL-ZO6mutb3Irr02QmrIf6aH3ll6IIAJxtENu5e0o8yku0FPB5uNO4E4tl4inOYLRMTFxXXHwfoRPHupxYGSOcWIbRYrWPqIojlm9Kzk1MGw_w8Cw69Ej_Ndw")' }}></div>
-                                        <div>
-                                            <p className="text-primary text-xl font-bold leading-normal">Solitaire Diamond Studs</p>
-                                            <p className="text-gray-600 dark:text-gray-400 text-sm font-normal leading-normal">Crafted in 18k yellow gold with a brilliant-cut diamond</p>
-                                            <button className="mt-2 text-primary font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">View Details</button>
-                                        </div>
-                                    </div>
-                                    <div className="flex flex-col gap-4 pb-3 group">
-                                        <div className="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl shadow-md overflow-hidden transform group-hover:scale-105 transition-transform duration-300" data-alt="The Aurelia Sunburst Ring" style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuCbUMhaSxtjUT9oj86TSnN4OC1Is6LiPKqF6edcYyCmOunUC28TTe60XjsG8j9Bumfkd1GeG_nFGAloZ9SFFZ6HMBec1CptCapYBqn2adFzIt37Z9KFD_aXp5c2nJHlUCQKhoE-BJYd7d2ejTU5nPwAoYA1soaxdvsTLPy8mtb6vPbEA-yalT5Fea6JQRZ1tP17V7OS1Vtmw6Yf968_vUuD6haU-vE10ze-SDfHz87dDp9IzHRP7RShwTTXKBKrfjptbPirUFKCEg")' }}></div>
-                                        <div>
-                                            <p className="text-primary text-xl font-bold leading-normal">The Golden Hoop Earrings</p>
-                                            <p className="text-gray-600 dark:text-gray-400 text-sm font-normal leading-normal">ClassNameic hoops reinvented with a modern twist</p>
-                                            <button className="mt-2 text-primary font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">View Details</button>
-                                        </div>
-                                    </div>
-                                    <div className="flex flex-col gap-4 pb-3 group">
-                                        <div className="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl shadow-md overflow-hidden transform group-hover:scale-105 transition-transform duration-300" data-alt="Eternity Weave Necklace" style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuC849PgYXhYBlvokqGWunQajaERWmBp4ulXn1WnXTJkTo13cH_Ss7X-UvgvlyB_oFVnKfU-ZrtOSCvrhvh3aI_9xJpIGmaiDQhbXQxgs67IPGB2GVvrTiVR5eZx_HF-NodrUU-4bJlLBs6u9zyvGl3V5G-02hPYb-LYlXJjbOxDvyfDiQK6_nP7Ulyxto4WjJdSRi7Rn_9YWEmrpYkWd0TQbAgNXXIhB2a_VltI9Gpipt8atc5a7y2D9oF4ECAK9uH22TKvUgHaDg")' }}></div>
-                                        <div>
-                                            <p className="text-primary text-xl font-bold leading-normal">Serpentine Bracelet</p>
-                                            <p className="text-gray-600 dark:text-gray-400 text-sm font-normal leading-normal">A bold and elegant statement piece for any occasion</p>
-                                            <button className="mt-2 text-primary font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">View Details</button>
-                                        </div>
-                                    </div>
-                                    <div className="flex flex-col gap-4 pb-3 group">
-                                        <div className="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl shadow-md overflow-hidden transform group-hover:scale-105 transition-transform duration-300" data-alt="Solitaire Diamond Studs" style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuANYoT2aGSJP1BT7wSMhj-Gn_6_eOCSihM8VJnMS-h1Xa9LqcgTBxAJOc5eaMWB3PEEH5Vsq_vJAFGqSpCFYlazVL6r52HryCv_wHZiw0pSyZyU2xQuOS5l-5hkd3r5809ZQDyz73ULZrwHBrgCRSeqvjweecN2VqF_xldBkIVD4b1uMNpukBIvOzWwzpIsB59xU0MjygYvbRoxqjDy9nz26DWaAvP5rwd1Sva4GmX1QHDDZV08QAyDfpIJKBRdvwhXZfTQqqXLsQ")' }}></div>
-                                        <div>
-                                            <p className="text-primary text-xl font-bold leading-normal">Royal Crest Pendant</p>
-                                            <p className="text-gray-600 dark:text-gray-400 text-sm font-normal leading-normal">A symbol of heritage and timeless elegance</p>
-                                            <button className="mt-2 text-primary font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">View Details</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="flex items-center justify-center p-4 mt-8">
-                                    <Link className="flex size-10 items-center justify-center text-[#1A1A1A] dark:text-white" href="#">
-                                        <span className="material-symbols-outlined text-xl">chevron_left</span>
-                                    </Link>
-                                    <Link className="text-sm font-bold leading-normal tracking-[0.015em] flex size-10 items-center justify-center text-white rounded-full bg-primary" to="#">
-                                        1
-                                    </Link>
-                                    <Link className="text-sm font-normal leading-normal flex size-10 items-center justify-center text-[#1A1A1A] dark:text-white rounded-full hover:bg-primary/20 dark:hover:bg-primary/30" to="#">
-                                        2
-                                    </Link>
-                                    <Link className="text-sm font-normal leading-normal flex size-10 items-center justify-center text-[#1A1A1A] dark:text-white rounded-full hover:bg-primary/20 dark:hover:bg-primary/30" to="#">
-                                        3
-                                    </Link>
-                                    <span className="text-sm font-normal leading-normal flex size-10 items-center justify-center text-[#1A1A1A] dark:text-white rounded-full">...</span>
-                                    <Link className="text-sm font-normal leading-normal flex size-10 items-center justify-center text-[#1A1A1A] dark:text-white rounded-full hover:bg-primary/20 dark:hover:bg-primary/30" to="#">
-                                        8
-                                    </Link>
-                                    <Link className="text-sm font-normal leading-normal flex size-10 items-center justify-center text-[#1A1A1A] dark:text-white rounded-full hover:bg-primary/20 dark:hover:bg-primary/30" to="#">
-                                        9
-                                    </Link>
-                                    <Link className="text-sm font-normal leading-normal flex size-10 items-center justify-center text-[#1A1A1A] dark:text-white rounded-full hover:bg-primary/20 dark:hover:bg-primary/30" to="#">
-                                        10
-                                    </Link>
-                                    <Link className="flex size-10 items-center justify-center text-[#1A1A1A] dark:text-white" href="#">
-                                        <span className="material-symbols-outlined text-xl">chevron_right</span>
-                                    </Link>
+                                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
+                                    {products &&
+                                        products
+                                            .filter((f) => !selectTypes || f.type === selectTypes)
+                                            .map((item) => (
+                                                <div className="flex flex-col gap-4 pb-3 group" key={item.id}>
+                                                    <div className="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl shadow-md overflow-hidden transform group-hover:scale-105 transition-transform duration-300" style={{ backgroundImage: `url(${item.image_path})` }}></div>
+
+                                                    <div>
+                                                        <p className="text-primary text-xl font-bold leading-normal">{item.title}</p>
+                                                        <p className="text-gray-600 dark:text-gray-400 text-sm font-normal leading-normal">{item.description}</p>
+
+                                                        <button className="mt-2 text-primary font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">View Details</button>
+                                                    </div>
+                                                </div>
+                                            ))}
                                 </div>
                                 <footer className="border-t border-gray-200 dark:border-gray-800 mt-16 py-8 px-4">
                                     <div className="max-w-[960px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
