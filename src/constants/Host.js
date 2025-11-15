@@ -1,1 +1,1 @@
-export const HOST = "http://185.105.91.97:5050"
+export const HOST = "/api"
