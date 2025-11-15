@@ -1,7 +1,16 @@
-import { Link } from "react-router-dom";
-import Navbar from "../components/Navbar";
+import { Link } from 'react-router-dom'
+import Navbar from '../components/Navbar'
+import { Instagram, Send } from 'lucide-react'
+import { useTranslations } from '../hook/useTranslations'
+
+const TEXT_CONFIG = [
+    { code: 'HOME', default: 'Home' },
+    { code: 'ABOUT_US', default: 'About Us' },
+    { code: 'CONTACT_US', default: 'Contact' },
+]
 
 export default function Story() {
+    const textMap = useTranslations(TEXT_CONFIG)
     return (
         <div className="bg-background-light dark:bg-background-dark">
             <div className="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
@@ -11,9 +20,9 @@ export default function Story() {
                             <Navbar />
                             <main className="flex-1">
                                 <div className="py-12 md:py-20">
-                                    <div className="flex min-h-[360px] md:min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat rounded-xl items-center justify-center p-4" data-alt="Abstract gold texture background" style={{backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%), url(\"https://lh3.googleusercontent.com/aida-public/AB6AXuBlqe6AXfKb2LRCMTSInofgPy0w0hV5sbzWiQxaSIfcKMAcqjgA6W7IRrYOwiabs-SjkUwaSBHNN8lLZWAeX4wZ0fvt1JSSriIP21QXG7Bm3bRaoKS0uHzC9jbYaUwQRW5G0PIf6ETA8m99oWVLzgR8YVKkjf3Xhg14vpd2a2xwDTrQ6JEI1Vs_pKSSLtyw9qLzmxqPPpvA_atMwVojfyuJvJXRgHNm1KRcBDOef7L1lsuyeJd5nQIdJDitSjVZdHRcM1qT4blDyA\")"}}>
+                                    <div className="flex min-h-[360px] md:min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat rounded-xl items-center justify-center p-4" data-alt="Abstract gold texture background" style={{ backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBlqe6AXfKb2LRCMTSInofgPy0w0hV5sbzWiQxaSIfcKMAcqjgA6W7IRrYOwiabs-SjkUwaSBHNN8lLZWAeX4wZ0fvt1JSSriIP21QXG7Bm3bRaoKS0uHzC9jbYaUwQRW5G0PIf6ETA8m99oWVLzgR8YVKkjf3Xhg14vpd2a2xwDTrQ6JEI1Vs_pKSSLtyw9qLzmxqPPpvA_atMwVojfyuJvJXRgHNm1KRcBDOef7L1lsuyeJd5nQIdJDitSjVZdHRcM1qT4blDyA")' }}>
                                         <div className="flex flex-col gap-4 text-center">
-                                            <h1 className="text-white text-4xl md:text-6xl font-black leading-tight tracking-tighter font-display">Our Journey: A Legacy of Craftsmanship</h1>
+                                            <h1 className="text-white text-4xl md:text-6xl font-black leading-tight font-display">Our Journey: A Legacy of Craftsmanship</h1>
                                             <h2 className="text-white text-base md:text-lg font-normal leading-normal max-w-2xl mx-auto font-sans">Discover the story of Gold House, from humble beginnings to Link symbol of elegance and quality.</h2>
                                         </div>
                                     </div>
@@ -137,24 +146,26 @@ export default function Story() {
                             <footer className="flex flex-col gap-6 px-5 py-10 text-center border-t border-solid border-t-[#f0edea] dark:border-t-[#2a2622] mt-16">
                                 <div className="flex flex-wrap items-center justify-center gap-6">
                                     <Link className="text-[#857360] dark:text-gray-400 text-base font-normal leading-normal min-w-40 font-sans" to="/">
-                                        Home
+                                        {textMap['HOME']}
                                     </Link>
                                     <Link className="text-[#857360] dark:text-gray-400 text-base font-normal leading-normal min-w-40 font-sans" to="/about">
-                                        About
+                                        {textMap['ABOUT_US']}
                                     </Link>
                                     <Link className="text-[#857360] dark:text-gray-400 text-base font-normal leading-normal min-w-40 font-sans" to="/contact">
-                                        Contact Us
+                                        {textMap['CONTACT_US']}
                                     </Link>
                                 </div>
-                                <div className="flex flex-wrap justify-center gap-4">
-                                    <Link to="#">
-                                        <span className="material-symbols-outlined text-[#857360] dark:text-gray-400">group</span>
+                                <div className="flex justify-center space-x-4">
+                                    <Link to="https://t.me/GoldHouse0711" className="flex flex-col items-center gap-2 text-center">
+                                        <div className="rounded-full bg-[#f0edea] dark:bg-[#2a2622] p-3 w-10 h-10 flex items-center justify-center">
+                                            <Send className="text-[#181411] dark:text-white w-4 h-4" />
+                                        </div>
                                     </Link>
-                                    <Link to="#">
-                                        <span className="material-symbols-outlined text-[#857360] dark:text-gray-400">photo_camera</span>
-                                    </Link>
-                                    <Link to="#">
-                                        <span className="material-symbols-outlined text-[#857360] dark:text-gray-400">flutter_dash</span>
+
+                                    <Link to="https://www.instagram.com/goldhouseeee" className="flex flex-col items-center gap-2 text-center">
+                                        <div className="rounded-full bg-[#f0edea] dark:bg-[#2a2622] p-3 w-10 h-10 flex items-center justify-center">
+                                            <Instagram className="text-[#181411] dark:text-white w-4 h-4" />
+                                        </div>
                                     </Link>
                                 </div>
                                 <p className="text-[#857360] dark:text-gray-400 text-base font-normal leading-normal font-sans">© 2025 MYB Team. All Rights Reserved.</p>

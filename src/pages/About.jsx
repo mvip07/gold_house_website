@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
+import { Instagram, Send } from 'lucide-react'
 
 export default function About() {
     return (
@@ -13,7 +14,7 @@ export default function About() {
                                 <div className="px-4 py-16">
                                     <div className="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat rounded-lg items-center justify-center p-4" data-alt="A vintage photograph of the original Gold House workshop, with jewelers at their benches." style={{ backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDYkNblqGCkxy3PDYpS9jTWFdWkua4LcLA4SR9GBXx715ANt_L9Z0gONMFwsz4mXehsl5hdeLtfxJG6Q7-bxS78zyT_hkZHQEbSqC0qaLdvBd_l0PirZcrAX4iGu50K-T_85hQqLZ5F9R3XQIqYTgtJtOJNanoAgouJA_hhmdAdW0oX7_gmvRM4CfLOMiV95ZT3ApfgJ0MBhTUzmBmExogspnTFiLRRk8QVUV9pmML6JnqPJy3mhm_H2GwV9Ukevka_Pr050z1Lng")' }}>
                                         <div className="flex flex-col gap-2 text-center">
-                                            <h1 className="text-white text-5xl font-black leading-tight tracking-[-0.033em] font-display">A Legacy of Craftsmanship</h1>
+                                            <h1 className="text-white text-5xl font-black leading-tight  font-display">A Legacy of Craftsmanship</h1>
                                             <h2 className="text-white text-lg font-normal leading-normal">Discover the story behind our timeless jewelry.</h2>
                                         </div>
                                     </div>
@@ -48,7 +49,7 @@ export default function About() {
                                 </div>
                             </main>
                             <footer className="text-[#181411] dark:text-white body-font">
-                                <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+                                <div className="container px-5 py-8 mx-auto flex items-center justify-between sm:flex-row flex-col">
                                     <Link to="" className="flex title-font font-medium items-center md:justify-start justify-center text-[#181411] dark:text-white">
                                         <div className="size-6">
                                             <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
@@ -57,25 +58,20 @@ export default function About() {
                                         </div>
                                         <span className="ml-3 text-xl font-display">Gold House</span>
                                     </Link>
-                                    <p className="text-sm text-gray-500 dark:text-gray-400 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 dark:sm:border-gray-700 sm:py-2 sm:mt-0 mt-4">© 2025 MYB Team. All Rights Reserved.</p>
-                                    <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-                                        <Link to="" className="text-gray-500 dark:text-gray-400">
-                                            <svg className="w-5 h-5" fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24">
-                                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-                                            </svg>
+                                    <p className="text-sm text-gray-500 dark:text-gray-400  sm:py-2 sm:mt-0 mt-4">© 2025 MYB Team. All Rights Reserved.</p>
+                                    <div className="flex justify-end space-x-4">
+                                        <Link to="https://t.me/GoldHouse0711" className="flex flex-col items-center gap-2 text-center">
+                                            <div className="rounded-full bg-[#f0edea] dark:bg-[#2a2622] p-3 w-10 h-10 flex items-center justify-center">
+                                                <Send className="text-[#181411] dark:text-white w-4 h-4" />
+                                            </div>
                                         </Link>
-                                        <Link to="" className="ml-3 text-gray-500 dark:text-gray-400">
-                                            <svg className="w-5 h-5" fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24">
-                                                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-                                            </svg>
+
+                                        <Link to="https://www.instagram.com/goldhouseeee" className="flex flex-col items-center gap-2 text-center">
+                                            <div className="rounded-full bg-[#f0edea] dark:bg-[#2a2622] p-3 w-10 h-10 flex items-center justify-center">
+                                                <Instagram className="text-[#181411] dark:text-white w-4 h-4" />
+                                            </div>
                                         </Link>
-                                        <Link to="" className="ml-3 text-gray-500 dark:text-gray-400">
-                                            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24">
-                                                <rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect>
-                                                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
-                                            </svg>
-                                        </Link>
-                                    </span>
+                                    </div>
                                 </div>
                             </footer>
                         </div>

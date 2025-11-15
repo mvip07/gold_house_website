@@ -1,54 +1,41 @@
-import React, { useState, useMemo, useCallback, useEffect, useContext } from 'react'
+import React, { useMemo, useCallback, useEffect, useState, useContext } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
-import { getUserLanguage } from '../lib/getUserLanguage'
 import { LanguageContext } from '../context/LanguageContext'
+import { useTranslations } from '../hook/useTranslations'
 
 const LINK_CONFIG = [
-    { code: 'home', to: '/' },
-    { code: 'about', to: '/about' },
-    { code: 'store', to: '/story' },
-    { code: 'collection', to: '/collection' },
-    { code: 'certifications', to: '/certification' },
-    { code: 'contact_us', to: '/contact' },
+    { code: 'HOME', to: '/', default: 'Home' },
+    { code: 'ABOUT_US', to: '/about', default: 'About Us' },
+    { code: 'OUR_STORY', to: '/story', default: 'Our Story' },
+    { code: 'OUR_PRODUCTS', to: '/collection', default: 'Our Collections' },
+    { code: 'OUR_CERTIFICATE', to: '/certification', default: 'Our Certificates' },
+    { code: 'CONTACT_US', to: '/contact', default: 'Contact Us' },
 ]
 
 const Navbar = React.memo(function Navbar() {
     const location = useLocation()
     const [isOpen, setIsOpen] = useState(false)
-    const [links, setLinks] = useState(LINK_CONFIG.map((l) => ({ ...l, name: '...' })))
-    const { language, changeLanguage } = useContext(LanguageContext);
+    const textMap = useTranslations(LINK_CONFIG)
+    const { language, changeLanguage } = useContext(LanguageContext)
 
-    const handleLanguageChange = useCallback((e) => {
-        changeLanguage(e.target.value);
-    }, [changeLanguage]);
+    const [links, setLinks] = useState(LINK_CONFIG.map((l) => ({ ...l, name: l.default })))
 
     useEffect(() => {
-        let isMounted = true
+        setLinks(
+            LINK_CONFIG.map((link) => ({
+                ...link,
+                name: textMap[link.code] || link.default,
+            }))
+        )
+    }, [textMap])
 
-        const fetchLinks = async () => {
-            try {
-                const fetchedLinks = await Promise.all(
-                    LINK_CONFIG.map(async (config) => {
-                        const name = await getUserLanguage(language, config.code)
-                        return { ...config, name }
-                    })
-                )
-
-                if (isMounted) setLinks(fetchedLinks)
-            } catch (error) {
-                console.error('Navigatsiya linklarini yuklashda xatolik:', error)
-                if (isMounted) {
-                    setLinks(LINK_CONFIG.map((l) => ({ ...l })))
-                }
-            }
-        }
-
-        fetchLinks()
-        return () => {
-            isMounted = false
-        }
-    }, [language])
+    const handleLanguageChange = useCallback(
+        (e) => {
+            changeLanguage(e.target.value)
+        },
+        [changeLanguage]
+    )
 
     const toggleMenu = useCallback(() => setIsOpen((prev) => !prev), [])
     const closeMenu = useCallback(() => setIsOpen(false), [])

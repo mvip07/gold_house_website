@@ -1,3 +1,10 @@
 .scroll-none::-webkit-scrollbar {
     display: none;
 }
+
+#collection {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: none; /* ixtiyoriy */
+}
