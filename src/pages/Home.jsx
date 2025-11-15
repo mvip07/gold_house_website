@@ -125,12 +125,13 @@ export default function Home() {
                         <div className="mx-auto px-4 lg:px-20 text-center">
                             <h2 className="font-display text-4xl lg:text-5xl mb-16 font-bold text-dark">{textMap['OUR_CERTIFICATE']}</h2>
                             <div className="grid md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-12 lg:gap-20">
-                                {certificates.slice(0, 2).map((c) => (
-                                    <div key={c.id} className="flex flex-col items-center">
-                                        <img alt="Certificate 1" className="h-48 w-auto opacity-80 hover:opacity-100 transition-opacity" src={c.file_path} />
-                                        <p className="font-sans text-lg mt-2 text-gray-600 dark:text-gray-400">{c.title}</p>
-                                    </div>
-                                ))}
+                                {certificates &&
+                                    certificates?.slice(0, 2).map((c) => (
+                                        <div key={c.id} className="flex flex-col items-center">
+                                            <img alt="Certificate 1" className="h-48 w-auto opacity-80 hover:opacity-100 transition-opacity" src={c.file_path} />
+                                            <p className="font-sans text-lg mt-2 text-gray-600 dark:text-gray-400">{c.title}</p>
+                                        </div>
+                                    ))}
                             </div>
                         </div>
                     </section>
