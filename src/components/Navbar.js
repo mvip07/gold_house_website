@@ -71,12 +71,15 @@ const Navbar = React.memo(function Navbar() {
                 </select>
             </div>
 
-            <button onClick={toggleMenu} className={`${iconColorClass} lg:hidden`}>
-                {isOpen ? <X size={24} /> : <Menu size={24} />}
+            <button onClick={toggleMenu} className={`${iconColorClass} lg:hidden relative z-40`}>
+                {<Menu size={24} />}
             </button>
 
             {isOpen && (
-                <div className="fixed top-0 left-0 w-full h-screen bg-black/50 dark:bg-white/20 flex flex-col items-start p-4 gap-4 lg:hidden backdrop-blur-sm animate-fadeIn">
+                <div className="fixed top-0 left-0 w-full h-screen bg-black/50 dark:bg-white/20 flex flex-col items-start p-4 gap-4 lg:hidden backdrop-blur-sm animate-fadeIn z-40">
+                    <button onClick={closeMenu} className="absolute top-4 right-4 text-white z-50">
+                        <X size={28} />
+                    </button>
                     {links.map((link) => (
                         <NavLink key={link.to} to={link.to} onClick={closeMenu} className={({ isActive }) => `block w-full text-base font-medium ${isActive ? 'text-primary' : 'text-white'}`}>
                             {link.name}

@@ -22,6 +22,7 @@ const TEXT_CONFIG = [
     { code: 'STORY_PAGE_SUSTAINABILITY_DESCRIPTION', default: 'Introducing our commitment to ethically sourced materials and sustainable practices, ensuring beauty with a conscience.' },
     { code: 'STORY_PAGE_FUTURE_TITLE', default: 'A Golden Future' },
     { code: 'STORY_PAGE_FUTURE_DESCRIPTION', default: 'Continuing our tradition of excellence and looking towards a bright future, innovating while honoring our heritage.' },
+    { code: 'STORY_PAGE_TODAY', default: 'Today' },
 ]
 
 export const seoData = {
@@ -177,7 +178,7 @@ export default function Story() {
                                         <div className="relative flex items-center group">
                                             <div className="hidden md:block w-1/2 pr-8">
                                                 <div className="bg-white dark:bg-background-dark p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                                                    <h3 className="text-primary text-2xl font-bold font-display">Today</h3>
+                                                    <h3 className="text-primary text-2xl font-bold font-display">{textMap['STORY_PAGE_TODAY']}</h3>
                                                     <h4 className="text-[#181411] dark:text-white text-xl font-semibold mt-2 font-display">{textMap['STORY_PAGE_FUTURE_TITLE']}</h4>
                                                     <p className="text-gray-600 dark:text-gray-400 mt-2 font-sans">{textMap['STORY_PAGE_FUTURE_DESCRIPTION']}</p>
                                                 </div>
@@ -189,7 +190,7 @@ export default function Story() {
                                                 <div className="rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
                                                     <img className="w-full h-64 object-cover" alt="Modern jewelry design on Link gold background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-WhXhgb0AutrIyWMInjfPTmdW_KA9-r_6sbPNkBpUS-0WLY1KbEcjkd-Q7JShtC5ZsxzZ-clmoUPqa-G4Npo6CC7x2Zd1d1TtQsqAiBdKGc6nnHP6hfAVzRjzg1jlEtPNka-NNgRj4WUjh1sOlrRY4LmR7NS9TXrLQKJqew3TZ5T8bACRb8u89IyskXLlL9B24AE7U0_lIvboe2CgGzhFvSlVCNDsHKSCBcuHxjtS0r7oVgS3fLJFmtQa82PjuotwpOVcwH3iIQ" />
                                                     <div className="md:hidden bg-white dark:bg-background-dark p-4">
-                                                        <h3 className="text-primary text-xl font-bold font-display">Today</h3>
+                                                        <h3 className="text-primary text-xl font-bold font-display">{textMap['STORY_PAGE_TODAY']}</h3>
                                                         <h4 className="text-[#181411] dark:text-white text-lg font-semibold mt-1 font-display">{textMap['STORY_PAGE_FUTURE_TITLE']}</h4>
                                                         <p className="text-gray-600 dark:text-gray-400 mt-1 font-sans text-sm">{textMap['STORY_PAGE_FUTURE_DESCRIPTION']}</p>
                                                     </div>
