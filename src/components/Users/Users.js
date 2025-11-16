@@ -1,10 +1,10 @@
 'use client'
-import { motion } from 'framer-motion'
 import { useMemo, useState } from 'react'
+import { motion } from 'framer-motion'
 import { useModal } from '../UI/Modal'
 import { useUsers } from '../../hook/useUsers'
-import { CreateUserModal, EditUserModal, DeleteUserModal } from './modals'
 import { fadeUp, staggeredList } from '../../lib/motion'
+import { CreateUserModal, EditUserModal, DeleteUserModal } from './modals'
 
 export default function Users() {
     const { loading, users, fetchUser, handleCreate, handleUpdate, handleDelete } = useUsers()

@@ -1,27 +1,16 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
+import { Instagram, Send } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import { useProducts } from '../hook/useProducts'
 import { useTranslations } from '../hook/useTranslations'
-import { Instagram, Send } from 'lucide-react'
+import { LanguageContext } from '../context/LanguageContext'
 
 const TEXT_CONFIG = [
-    { code: 'HOME_PAGE_MAIN_TITLE', default: 'Elegance in Every Detail' },
-    { code: 'HOME_PAGE_MAIN_DESCRIPTION', default: 'Discover the timeless beauty of handcrafted gold jewelry, where tradition meets modern luxury.' },
-    { code: 'HOME_PAGE_MAIN_BTN', default: 'Explore Our Collections' },
-    { code: 'HOME_PAGE_ABOUT_TITLE', default: 'A Legacy of Craftsmanship' },
-    { code: 'HOME_PAGE_ABOUT_DESCRIPTION', default: 'For over three decades, Gold House has been synonymous with exceptional quality and artistry. We are a family-owned business dedicated to preserving the ancient craft of goldsmithing while embracing contemporary design.' },
-    { code: 'HOME_PAGE_ABOUT_BTN', default: 'Learn More About Us' },
-    { code: 'HOME_PAGE_PRODUCT_TITLE', default: 'Featured Collections' },
-    { code: 'HOME_PAGE_PRODUCT_DESCRIPTION', default: 'Each piece is a testament to our commitment to excellence, designed to be cherished for generations.' },
-    { code: 'OUR_CERTIFICATE', default: 'Certified Excellence' },
-    { code: 'OUR_STORY', default: 'Our Journey Through Time' },
-    { code: 'HOME_PAGE_STORY_1_TITLE', default: 'The Beginning' },
-    { code: 'HOME_PAGE_STORY_1_DESCRIPTION', default: 'Our founder opens a small workshop with a vision to create extraordinary jewelry.' },
-    { code: 'HOME_PAGE_STORY_2_TITLE', default: 'First International Award' },
-    { code: 'HOME_PAGE_STORY_2_DESCRIPTION', default: 'Recognition for "Best Design" at the Paris International Jewelry Fair.' },
-    { code: 'HOME_PAGE_STORY_3_TITLE', default: 'Embracing the Future' },
-    { code: 'HOME_PAGE_STORY_3_DESCRIPTION', default: 'Launch of our e-commerce platform, bringing Gold House to the world.' },
+    { code: 'PRODUCT_SELECT_TYPE', default: 'Select Type' },
+    { code: 'PRODUCT_SELECT_TYPE', default: 'Выберите тип' },
+    { code: 'PRODUCT_SELECT_TYPE', default: 'Turini tanlang' },
     { code: 'HOME_PAGE_FOOTER_TEXT', default: 'Crafting timeless elegance since 1988.' },
     { code: 'HOME_PAGE_FOOTER_LINK_1', default: 'Quick Links' },
     { code: 'HOME_PAGE_FOOTER_LINK_2', default: 'Follow Us' },
@@ -30,11 +19,32 @@ const TEXT_CONFIG = [
     { code: 'OUR_PRODUCTS', default: 'Our Exquisite Collection' },
 ]
 
+const seoData = {
+    UZ: {
+        title: 'Gold House - Bizning Tilla Zargarlik Koleksiyamiz',
+        description: 'Gold House: nozik tilla uzuklar, bilakuzuklar va zanjirlar. Har bir mahsulotimiz premium sifat va nafis dizayn bilan yaratilgan.',
+        keywords: 'Gold House, tilla zargarlik, uzuk, bilakuzuk, zanjir, premium zargarlik, elegant zargarlik, fashion jewelry, handmade jewelry, gift jewelry, exclusive jewelry',
+    },
+    RU: {
+        title: 'Gold House - Наша Коллекция Золотых Украшений',
+        description: 'Gold House: изысканные золотые кольца, браслеты и цепочки. Каждый продукт изготовлен с премиальным качеством и элегантным дизайном.',
+        keywords: 'Gold House, золотые украшения, кольца, браслеты, цепочки, премиальные украшения, элегантные украшения, ювелирное искусство, ручная работа, подарочные украшения',
+    },
+    EN: {
+        title: 'Gold House - Our Exquisite Gold Jewelry Collection',
+        description: 'Gold House: delicate gold rings, bracelets, and chains. Each product crafted with premium quality and elegant design.',
+        keywords: 'Gold House, gold jewelry, rings, bracelets, chains, premium craftsmanship, elegant jewelry, fashion jewelry, handmade jewelry, gift jewelry, exclusive jewelry',
+    },
+}
+
 export default function Collection() {
-    const textMap = useTranslations(TEXT_CONFIG)
     const { products } = useProducts()
+    const { language } = useContext(LanguageContext)
+    const textMap = useTranslations(TEXT_CONFIG)
+
     const [page, setPage] = useState(1)
     const [selectTypes, setSelectedTypes] = useState('')
+
     const typesCategory = [...new Set(products.map((p) => p.type))]
 
     const filteredProducts = products.filter((f) => !selectTypes || f.type === selectTypes)
@@ -42,8 +52,28 @@ export default function Collection() {
     const paginatedProducts = filteredProducts.slice((page - 1) * 6, page * 6)
     const pages = Array.from({ length: totalPages }, (_, i) => i + 1)
 
+    const productTitles = products.map((p) => p.title).join(', ')
+    const productDescriptions = products.map((p) => p.description).join('. ')
+
     return (
         <div className="bg-background-light dark:bg-background-dark font-display text-[#1A1A1A] dark:text-white">
+            <Helmet>
+                <title>{seoData[language]?.title}</title>
+                <meta name="description" content={`${seoData[language]?.description} | Products: ${productTitles}`} />
+                <meta name="keywords" content={`${seoData[language]?.keywords}, ${productTitles}`} />
+
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <meta name="robots" content="index, follow" />
+                <meta property="og:title" content={seoData[language]?.title} />
+                <meta property="og:description" content={`${seoData[language]?.description} | Products: ${productDescriptions}`} />
+                <meta property="og:type" content="website" />
+                <meta property="og:image" content="/logo.jpg" />
+                <meta property="og:site_name" content="Gold House" />
+                <meta property="og:locale" content={language} />
+                <meta property="og:url" content={window.location.href} />
+                <meta property="og:see_also" content="https://t.me/GoldHouse0711" />
+                <meta property="og:see_also" content="https://www.instagram.com/goldhouseeee" />
+            </Helmet>
             <div className="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
                 <div className="layout-container flex h-full grow flex-col">
                     <div className="px-4 md:px-10 lg:px-40 flex flex-1 justify-center py-5">
@@ -62,7 +92,7 @@ export default function Collection() {
                                         id="collection"
                                         className="rounded-lg bg-background-light dark:bg-background-dark border dark:border-gray-700 py-3 px-6"
                                     >
-                                        <option value="">Select Type</option>
+                                        <option value="">{textMap['PRODUCT_SELECT_TYPE']}</option>
                                         {typesCategory.map((t) => (
                                             <option key={t} value={t}>
                                                 {t}

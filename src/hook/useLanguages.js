@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from 'react'
 import { languageService } from '../services/languageService'
-import { handleApiError } from '../lib/helpers/handleApiError'
 import { notify } from '../lib/toastify'
+import { handleApiError } from '../lib/helpers/handleApiError'
 
 export const useLanguages = () => {
     const [loading, setLoading] = useState(false)

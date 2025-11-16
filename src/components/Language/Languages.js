@@ -1,9 +1,9 @@
-import { motion } from 'framer-motion'
-import { useLanguages } from '../../hook/useLanguages'
-import { useModal } from '../UI/Modal'
-import { CreateLanguageModal, EditLanguageModal, DeleteLanguageModal } from './modals'
 import { useMemo, useState } from 'react'
+import { motion } from 'framer-motion'
+import { useModal } from '../UI/Modal'
+import { useLanguages } from '../../hook/useLanguages'
 import { fadeUp, staggeredList } from '../../lib/motion'
+import { CreateLanguageModal, EditLanguageModal, DeleteLanguageModal } from './modals'
 
 export default function Languages() {
     const { loading, languages, fetchLanguage, handleCreate, handleUpdate, handleDelete } = useLanguages()

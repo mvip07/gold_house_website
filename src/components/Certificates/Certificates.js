@@ -1,6 +1,6 @@
 'use client'
-import { motion } from 'framer-motion'
 import { useMemo, useState } from 'react'
+import { motion } from 'framer-motion'
 import { useModal } from '../UI/Modal'
 import { fadeUp, staggeredList } from '../../lib/motion'
 import { useCertificates } from '../../hook/useCertificates'

@@ -24,7 +24,7 @@ export const CreateCertificateModal = ({ closeModal, handleCreate }) => {
             </div>
             <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">File Path</label>
-                <FileUploader folder="certificates" type="file" fileUrl={formData.file_path} onChange={(url) => setFormData({ ...formData, file_path: url })} />
+                <FileUploader folder="certificates" type="pdf" fileUrl={formData.file_path} onChange={(url) => setFormData({ ...formData, file_path: url })} />
             </div>
         </form>
     )
@@ -66,7 +66,7 @@ export const EditCertificateModal = ({ id, closeModal, fetchCertificate, handleU
             </div>
             <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">File Path</label>
-                <FileUploader folder="certificates" type="file" fileUrl={formData.file_path} onChange={(url) => setFormData({ ...formData, file_path: url })} />
+                <FileUploader folder="certificates" type="pdf" fileUrl={formData.file_path} onChange={(url) => setFormData({ ...formData, file_path: url })} />
             </div>
         </form>
     )
@@ -117,7 +117,7 @@ export const ViewCertificateModal = ({ id, closeModal, fetchCertificate }) => {
             </div>
             <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">File Path</label>
-                {formData.file_path && <img src={formData.file_path} alt="Certificate" className="w-full" />}
+                {formData.file_path && <iframe src={formData.file_path} className="h-48 w-auto opacity-80 hover:opacity-100 transition-opacity border-none" title={formData.title} loading="lazy"></iframe>}
             </div>
         </div>
     )

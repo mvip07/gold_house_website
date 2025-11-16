@@ -1,9 +1,12 @@
+import { useContext } from 'react'
+import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
+import { ChevronLeft, ChevronRight, Instagram, Send } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import { useProducts } from '../hook/useProducts'
 import { useCertificates } from '../hook/useCertificates'
-import { ChevronLeft, ChevronRight, Instagram, Send } from 'lucide-react'
 import { useTranslations } from '../hook/useTranslations'
+import { LanguageContext } from '../context/LanguageContext'
 
 const HOME_TEXT_CONFIG = [
     { code: 'HOME_PAGE_MAIN_TITLE', default: 'Elegance in Every Detail' },
@@ -30,13 +33,50 @@ const HOME_TEXT_CONFIG = [
     { code: 'OUR_PRODUCTS', default: 'Collections' },
 ]
 
+export const seoData = {
+    EN: {
+        title: 'Gold House — Timeless Gold Jewelry & Premium Accessories',
+        description: 'Gold House crafts premium gold jewelry and luxury accessories — wedding rings, chains, bracelets. Handcrafted quality, certified materials and lifetime care.',
+        keywords: 'gold jewelry, luxury gold accessories, handcrafted gold rings, gold wedding bands, 18k gold chains, premium gold bracelets, bespoke gold jewelry, gift gold jewelry, bridal gold rings, delicate gold necklaces, solid gold chain for men, gold bracelet for women, custom wedding rings, heirloom gold pieces, certified gold jewelry, artisan goldsmith, luxury gift jewelry, gold pendant designs, everyday gold jewelry, gold jewelry care, classic gold chains, modern gold bracelets, minimalist gold rings, gold craftsmanship, high-end gold accessories',
+    },
+    RU: {
+        title: 'Gold House — Вечная золотая ювелирия и премиум аксессуары',
+        description: 'Gold House создает премиальную золотую ювелирку: обручальные кольца, цепи, браслеты. Ручная работа, сертифицированные материалы и пожизненный уход.',
+        keywords: 'золотые украшения, ювелирные изделия из золота, обручальные кольца из золота, золотые цепочки 18k, премиум браслеты, подарочные ювелирные изделия, ручная работа ювелир, золотые подвески, сертификат на золото, кастомные кольца, ювелирный подарок на годовщину, золотые серьги, уход за золотом, золото 18к vs 14к, украшения на каждый день, мужские золотые цепи, женские золотые браслеты, минималистичные золотые кольца, дизайнерские золотые украшения, качественная ювелирная работа, антикварные золотые мотивы, матчинг кольца и цепи, персонализация украшений, надёжные застёжки, ювелирная мастерская',
+    },
+    UZ: {
+        title: 'Gold House — Oltin zargarlik va premium aksessuarlar',
+        description: 'Gold House — nikoh uzuklari, zanjirlar, bilaguzuklar va premium oltin aksessuarlar. Hunarmandchilik, sertifikat va umrboqiy xizmat.',
+        keywords: "oltin zargarlik, premium oltin uzuklar, nikoh uzuklari, 18k oltin zanjir, bilaguzuklar, sovg‘a uchun oltin, qo‘lda ishlangan zargarlik, sertifikatli oltin, erkaklar uchun zanjir, ayollar uchun bilaguzuk, minimalist oltin uzuk, zargarlik parvarishi, qimmatbaho zargarlik, oilaviy meros, maxsus buyurtma uzuklar, haqiqiy oltin, bezakli bilaguzuk, zamonaviy oltin dizaynlari, juft uzuklar, zanjir qatlamlash, g‘ilofli sovg‘a qadoqlash, gravirovka xizmati, tiklash va parvarish, ishonchli zargarlik do'koni",
+    },
+}
+
 export default function Home() {
     const { products } = useProducts()
     const { certificates } = useCertificates()
+    const { language } = useContext(LanguageContext)
     const textMap = useTranslations(HOME_TEXT_CONFIG)
 
     return (
         <div className="bg-background-light dark:bg-background-dark text-text-dark dark:text-text-light">
+            <Helmet>
+                <title>{seoData[language].title}</title>
+                <meta name="description" content={seoData[language]?.description} />
+                <meta name="keywords" content={seoData[language]?.keywords} />
+
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <meta name="robots" content="index, follow" />
+                <meta property="og:title" content={seoData[language]?.title} />
+                <meta property="og:description" content={seoData[language]?.description} />
+                <meta property="og:type" content="website" />
+                <meta property="og:image" content="/logo.jpg" />
+                <meta property="og:site_name" content="Gold House" />
+                <meta property="og:locale" content={language} />
+                <meta property="og:url" content={window.location.href} />
+                <meta property="og:see_also" content="https://t.me/GoldHouse0711" />
+                <meta property="og:see_also" content="https://www.instagram.com/goldhouseeee" />
+            </Helmet>
+
             <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden">
                 <Navbar />
                 <main className="flex-grow">
@@ -89,7 +129,7 @@ export default function Home() {
                                                                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{p.title}</h3>
                                                                 <p className="text-gray-600 dark:text-gray-300 text-sm line-clamp-2 mb-3">{p.description}</p>
                                                                 <div className="flex justify-between items-center">
-                                                                    <span className="text-lg font-bold text-blue-600 dark:text-blue-400">${p.proba}</span>
+                                                                    <span className="text-lg font-bold text-blue-600 dark:text-blue-400">{p.proba}*</span>
                                                                     <span className="text-sm text-gray-500 dark:text-gray-400">{p.gramm}g</span>
                                                                 </div>
                                                             </div>
@@ -124,18 +164,18 @@ export default function Home() {
                     <section className="py-10" id="certificates">
                         <div className="mx-auto px-4 lg:px-20 text-center">
                             <h2 className="font-display text-4xl lg:text-5xl mb-16 font-bold text-dark">{textMap['OUR_CERTIFICATE']}</h2>
-                            <div className="grid md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-12 lg:gap-20">
+                            <div className="grid md:grid-cols-2  justify-center items-center gap-6 lg:gap-10">
                                 {certificates &&
                                     certificates?.slice(0, 2).map((c) => (
                                         <div key={c.id} className="flex flex-col items-center">
-                                            <img alt="Certificate 1" className="h-48 w-auto opacity-80 hover:opacity-100 transition-opacity" src={c.file_path} />
+                                            <iframe src={`${c.file_path}#toolbar=0`} className="h-72 opacity-80 hover:opacity-100 transition-opacity border-none" title={c.title} loading="lazy"></iframe>
                                             <p className="font-sans text-lg mt-2 text-gray-600 dark:text-gray-400">{c.title}</p>
                                         </div>
                                     ))}
                             </div>
                         </div>
                     </section>
-                    <section className="py-10 bg-gray-50 dark:bg-gray-900" id="story">
+                    <section className="pt-10 pb-20 bg-gray-50 dark:bg-gray-900" id="story">
                         <div className="container mx-auto px-4 lg:px-20">
                             <div className="text-center mb-16">
                                 <h2 className="font-display text-4xl lg:text-5xl font-bold text-text-dark dark:text-text-light">{textMap['OUR_STORY']}</h2>

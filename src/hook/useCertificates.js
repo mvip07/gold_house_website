@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from 'react'
 import { certificateService } from '../services/certificateService'
-import { handleApiError } from '../lib/helpers/handleApiError'
 import { notify } from '../lib/toastify'
+import { handleApiError } from '../lib/helpers/handleApiError'
 
 export const useCertificates = () => {
     const [loading, setLoading] = useState(false)

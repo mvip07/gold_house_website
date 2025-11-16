@@ -1,16 +1,16 @@
 'use client'
 import { useEffect, useState } from 'react'
-import Users from '../components/Users/Users'
-import Languages from '../components/Language/Languages'
-import { authService } from '../services/authService'
 import { toast } from 'react-toastify'
-import { setToken, getToken, clearToken } from '../lib/helpers/userStore'
 import { useNavigate } from 'react-router-dom'
+import { motion, AnimatePresence } from 'framer-motion'
+import Users from '../components/Users/Users'
+import Contacts from '../components/Contact/Contacts'
 import { ModalProvider } from '../components/UI/Modal'
 import Products from '../components/Products/Products'
-import Contacts from '../components/Contact/Contacts'
+import Languages from '../components/Language/Languages'
 import Certificates from '../components/Certificates/Certificates'
-import { motion, AnimatePresence } from 'framer-motion'
+import { authService } from '../services/authService'
+import { setToken, getToken, clearToken } from '../lib/helpers/userStore'
 
 export default function Admin() {
     const router = useNavigate()
@@ -52,32 +52,9 @@ export default function Admin() {
         toast.info('Logged out successfully')
     }
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                duration: 0.6,
-                staggerChildren: 0.1,
-            },
-        },
-    }
-
-    const itemVariants = {
-        hidden: { y: 20, opacity: 0 },
-        visible: {
-            y: 0,
-            opacity: 1,
-            transition: {
-                duration: 0.5,
-            },
-        },
-    }
-
     if (!isLoggedIn) {
         return (
             <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-600 relative overflow-hidden">
-                {/* Animated Background Elements */}
                 <div className="absolute inset-0 overflow-hidden">
                     <div className="absolute -top-40 -right-32 w-80 h-80 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
                     <div className="absolute -bottom-40 -left-32 w-80 h-80 bg-cyan-300/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
@@ -196,7 +173,6 @@ export default function Admin() {
                         </div>
                     </motion.header>
 
-                    {/* Navigation */}
                     <motion.nav initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="bg-white/5 backdrop-blur-lg border-b border-white/10 p-4">
                         <div className="max-w-7xl mx-auto flex flex-wrap gap-2">
                             <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => setActiveSection('dashboard')} className={`px-4 py-2 rounded-xl transition-all duration-300 ${activeSection === 'dashboard' ? 'bg-gradient-to-r from-emerald-500 to-cyan-600 text-white shadow-lg' : 'bg-white/10 text-white/80 hover:bg-white/20'}`}>
@@ -210,7 +186,6 @@ export default function Admin() {
                         </div>
                     </motion.nav>
 
-                    {/* Main Content */}
                     <main className="p-6 max-w-7xl mx-auto">
                         <AnimatePresence mode="wait">
                             <motion.div key={activeSection} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }} className="space-y-6">

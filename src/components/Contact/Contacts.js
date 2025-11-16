@@ -1,10 +1,10 @@
 'use client'
-import { motion } from 'framer-motion'
 import { useMemo, useState } from 'react'
+import { motion } from 'framer-motion'
 import { useModal } from '../UI/Modal'
 import { useContacts } from '../../hook/useContacts'
-import { CreateContactModal, ViewContactModal, DeleteContactModal } from './modal'
 import { fadeUp, staggeredList } from '../../lib/motion'
+import { CreateContactModal, ViewContactModal, DeleteContactModal } from './modal'
 
 export default function Contacts() {
     const { loading, contacts, fetchContact, handleCreate, handleDelete } = useContacts()

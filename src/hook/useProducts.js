@@ -1,9 +1,8 @@
 'use client'
 import { useState, useCallback, useEffect } from 'react'
-import { toast } from 'react-toastify'
 import { productService } from '../services/productService'
-import { handleApiError } from '../lib/helpers/handleApiError'
 import { notify } from '../lib/toastify'
+import { handleApiError } from '../lib/helpers/handleApiError'
 
 export const useProducts = () => {
     const [loading, setLoading] = useState(false)

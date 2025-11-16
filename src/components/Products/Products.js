@@ -1,10 +1,10 @@
 'use client'
-import { motion } from 'framer-motion'
 import { useMemo, useState } from 'react'
+import { motion } from 'framer-motion'
 import { useModal } from '../UI/Modal'
 import { useProducts } from '../../hook/useProducts'
-import { CreateProductModal, EditProductModal, DeleteProductModal } from './modal'
 import { fadeUp, staggeredList } from '../../lib/motion'
+import { CreateProductModal, EditProductModal, DeleteProductModal } from './modal'
 
 export default function Products() {
     const { loading, products, fetchProduct, handleCreate, handleUpdate, handleDelete } = useProducts()

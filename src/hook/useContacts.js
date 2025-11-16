@@ -1,8 +1,8 @@
 'use client'
 import { useState, useCallback, useEffect } from 'react'
 import { contactService } from '../services/contactService'
-import { handleApiError } from '../lib/helpers/handleApiError'
 import { notify } from '../lib/toastify'
+import { handleApiError } from '../lib/helpers/handleApiError'
 
 export const useContacts = () => {
     const [loading, setLoading] = useState(false)
