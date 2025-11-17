@@ -7,6 +7,8 @@ import { useProducts } from '../hook/useProducts'
 import { useCertificates } from '../hook/useCertificates'
 import { useTranslations } from '../hook/useTranslations'
 import { LanguageContext } from '../context/LanguageContext'
+import Img1 from "../assets/img/home.png"
+import Img2 from "../assets/img/home_about.png"
 
 const HOME_TEXT_CONFIG = [
     { code: 'HOME_PAGE_MAIN_TITLE', default: 'Elegance in Every Detail' },
@@ -82,9 +84,7 @@ export default function Home() {
                 <main className="flex-grow">
                     <section className="relative h-screen w-full">
                         <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
-                        <video autoPlay className="absolute inset-0 w-full h-full object-cover" loop muted poster="https://lh3.googleusercontent.com/aida-public/AB6AXuDAm9Gj_otxzApREx4mI_bp5EOk8KqX7Ml7J9U_8FtuYkG0qoEIOY8uVfAkug-kXDwYqLppV7S2bXN3BILtKmepgxlnA67jrmmeS0QSZMKUgm2DvlOXDkudQ5BY6-NQQNFSkaCf48tiqDxet8xSb_iieRthNIjGUOigmJUdW8g4FOUdWDf19_HZ26SAKSqvjOneOwBEt1UaHEkINFp2mfGfxuVmtrwkojQ88aXH-4oblLVgcVcZZ-bW8mkrK4N8hbkRI5fZHXICbA">
-                            <source src="https://assets.mixkit.co/videos/preview/mixkit-a-goldsmith-working-in-his-workshop-2387-large.mp4" type="video/mp4" />
-                        </video>
+                        <img className='absolute inset-0 w-full h-full ' src={Img1} alt="Home Page Main Img" />
                         <div className="relative z-20 flex flex-col items-center justify-center h-full text-center text-white px-4">
                             <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold mb-4">{textMap['HOME_PAGE_MAIN_TITLE']}</h1>
                             <p className="font-sans text-xl md:text-2xl max-w-2xl mb-8">{textMap['HOME_PAGE_MAIN_DESCRIPTION']}</p>
@@ -103,7 +103,7 @@ export default function Home() {
                                 </Link>
                             </div>
                             <div>
-                                <img alt="Goldsmith at work" className="rounded-xl shadow-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAd5or_8enU7r2OBOx71Yl63fUh2gtv8z4T2Hp6NZdVSDzPDWuZotqi0mgJnctg4s7IRkaFvtdo3P1SOnYFBG6HdCXWWWZn7W04UK_MNcmiQKOJ_Pv3Oz_jWgEAh3KumObRXBPaBvVRH9wsWIavLzxTYBKQeKWpo3ctc_7bHqK6FDHrUN2J8FTM-yo4hcK1TNiIGQUnLsmzW1t7Do2IAR0bPEnIXcbPtJ4K0UybJ4IoIBaZKMODfYhc9SP-0nHvIQ6D3GeC6mkN5A" />
+                                <img alt="Goldsmith at work" className="rounded-xl shadow-2xl w-full mx-auto max-w-[512px] h-auto" src={Img2} />
                             </div>
                         </div>
                     </section>

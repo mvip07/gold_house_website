@@ -5,6 +5,9 @@ import { Instagram, Send } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import { useTranslations } from '../hook/useTranslations'
 import { LanguageContext } from '../context/LanguageContext'
+import Img1 from "../assets/img/story1.png"
+import Img2 from "../assets/img/story2.png"
+import Img3 from "../assets/img/story3.png"
 
 const TEXT_CONFIG = [
     { code: 'HOME', default: 'Home' },
@@ -119,7 +122,7 @@ export default function Story() {
                                             </div>
                                             <div className="w-full md:w-1/2 md:pr-8">
                                                 <div className="rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                                                    <img className="w-full h-64 object-cover" alt="First flagship store exterior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDH9M2k_Ect__TxX61y3WKP3UzGSfu9xjdMUvRyZeozUDXKg1BNtjt_f6a0EtcY-pbuRW6iUoLE-Cnabx27EupEuRkyePVnzEKYENr7KWT6pZTAlSXpGtoPkxA3ZGDKPFb-BGobpGe872y_JcXf9WIOROq-mOum_YWqW_Y-CQciHjUsZwIvEogVKvkFTH4va2modnQ-yz_KsP_x_0sijoiEErPPSrmVnB1EfbIO1j4iKbqVf3lU712L95g9AJYEa8Z3PkUjIIjSqQ" />
+                                                    <img className="w-full h-64 object-cover object-[0_10%] " alt="First flagship store exterior" src={Img1} />
                                                     <div className="md:hidden bg-white dark:bg-background-dark p-4">
                                                         <h3 className="text-primary text-xl font-bold font-display">1990</h3>
                                                         <h4 className="text-[#181411] dark:text-white text-lg font-semibold mt-1 font-display">{textMap['STORY_PAGE_FIRST_STORE_TITLE']}</h4>
@@ -142,7 +145,7 @@ export default function Story() {
                                             </div>
                                             <div className="w-full md:w-1/2 md:pl-8">
                                                 <div className="rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                                                    <img className="w-full h-64 object-cover" alt="Eiffel Tower in Paris" data-location="Paris" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPpxJUhSmbcPNPQRpwlx-nV4MI94H9u-qLoebc7syrJ_nsUlFwpGlxNL-mvU3KwJb6dDb6izeuOESKOZzc4Nt-YdtC7SPDEghv7zqtxPyGVsg9l_bpc9fbxvnGZ-UPofqtmuctB3STnzbuOllcAPWEckiHgiRo6oD1feKC6gN3Ds07WYaIkCQP0a-XcS6aA2ZRUFNTo29pgejsl6wntkUX-61gBJJCht6wwb086w9sp9g8En8ynPOH_F1YAZoV4n29NvKsL749jQ" />
+                                                    <img className="w-full h-64 object-cover object-[0_5%]" alt="Eiffel Tower in Paris" data-location="Paris" src={Img2} />
                                                     <div className="md:hidden bg-white dark:bg-background-dark p-4">
                                                         <h3 className="text-primary text-xl font-bold font-display">2005</h3>
                                                         <h4 className="text-[#181411] dark:text-white text-lg font-semibold mt-1 font-display">{textMap['STORY_PAGE_EXPANDING_TITLE']}</h4>
@@ -188,7 +191,7 @@ export default function Story() {
                                             </div>
                                             <div className="w-full md:w-1/2 md:pl-8">
                                                 <div className="rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                                                    <img className="w-full h-64 object-cover" alt="Modern jewelry design on Link gold background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-WhXhgb0AutrIyWMInjfPTmdW_KA9-r_6sbPNkBpUS-0WLY1KbEcjkd-Q7JShtC5ZsxzZ-clmoUPqa-G4Npo6CC7x2Zd1d1TtQsqAiBdKGc6nnHP6hfAVzRjzg1jlEtPNka-NNgRj4WUjh1sOlrRY4LmR7NS9TXrLQKJqew3TZ5T8bACRb8u89IyskXLlL9B24AE7U0_lIvboe2CgGzhFvSlVCNDsHKSCBcuHxjtS0r7oVgS3fLJFmtQa82PjuotwpOVcwH3iIQ" />
+                                                    <img className="w-full h-64 object-cover" alt="Modern jewelry design on Link gold background" src={Img3} />
                                                     <div className="md:hidden bg-white dark:bg-background-dark p-4">
                                                         <h3 className="text-primary text-xl font-bold font-display">{textMap['STORY_PAGE_TODAY']}</h3>
                                                         <h4 className="text-[#181411] dark:text-white text-lg font-semibold mt-1 font-display">{textMap['STORY_PAGE_FUTURE_TITLE']}</h4>

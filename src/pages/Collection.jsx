@@ -81,7 +81,7 @@ export default function Collection() {
                             <Navbar />
                             <main className="flex-1">
                                 <div className="flex flex-wrap justify-between gap-3 p-4 mt-12 mb-4">
-                                    <p className="text-[#1A1A1A] dark:text-white text-5xl font-bold leading-tight tracking-[-0.033em] min-w-72">{textMap['OUR_PRODUCTS']}</p>
+                                    <h1 className="text-[#1A1A1A] dark:text-white text-5xl font-bold leading-tight tracking-[-0.033em] min-w-72">{textMap['OUR_PRODUCTS']}</h1>
                                 </div>
                                 <div className="flex gap-3 p-3 overflow-x-auto">
                                     <select

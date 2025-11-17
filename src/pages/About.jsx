@@ -5,6 +5,8 @@ import { Instagram, Send } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import { useTranslations } from '../hook/useTranslations'
 import { LanguageContext } from '../context/LanguageContext'
+import Img1 from "../assets/img/store.png"
+
 
 const TEXT_CONFIG = [
     { code: 'ABOUT_PAGE_TITLE', default: 'A Legacy of Craftsmanship' },
@@ -70,19 +72,19 @@ export default function About() {
                                     <div className="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat rounded-lg items-center justify-center p-4" data-alt="A vintage photograph of the original Gold House workshop, with jewelers at their benches." style={{ backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDYkNblqGCkxy3PDYpS9jTWFdWkua4LcLA4SR9GBXx715ANt_L9Z0gONMFwsz4mXehsl5hdeLtfxJG6Q7-bxS78zyT_hkZHQEbSqC0qaLdvBd_l0PirZcrAX4iGu50K-T_85hQqLZ5F9R3XQIqYTgtJtOJNanoAgouJA_hhmdAdW0oX7_gmvRM4CfLOMiV95ZT3ApfgJ0MBhTUzmBmExogspnTFiLRRk8QVUV9pmML6JnqPJy3mhm_H2GwV9Ukevka_Pr050z1Lng")' }}>
                                         <div className="flex flex-col gap-2 text-center">
                                             <h1 className="text-white text-5xl font-black leading-tight  font-display">{textMap['ABOUT_PAGE_TITLE']}</h1>
-                                            <h2 className="text-white text-lg font-normal leading-normal">{textMap['ABOUT_PAGE_DESCRIPTION']}</h2>
+                                            <p className="text-white text-lg font-normal leading-normal">{textMap['ABOUT_PAGE_DESCRIPTION']}</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="px-10 py-12">
-                                    <h1 className="text-[#181411] dark:text-white tracking-light text-4xl font-bold leading-tight text-center pb-6 font-display">{textMap['ABOUT_PAGE_OUR_HISTORY']}</h1>
+                                    <h2 className="text-[#181411] dark:text-white tracking-light text-4xl font-bold leading-tight text-center pb-6 font-display">{textMap['ABOUT_PAGE_OUR_HISTORY']}</h2>
                                     <p className="text-[#181411] dark:text-gray-300 text-lg font-normal leading-relaxed text-center max-w-3xl mx-auto">{textMap['ABOUT_PAGE_HISTORY']}</p>
                                 </div>
                                 <div className="px-4 py-8">
                                     <div className="flex w-full grow @container">
-                                        <div className="w-full gap-4 overflow-hidden aspect-[2/1] grid grid-cols-2">
+                                        <div className="w-full gap-4 overflow-hidden aspect-[1/2] md:aspect-[2/1] grid md:grid-cols-2 grid-cols-1">
                                             <div className="w-full bg-center bg-no-repeat bg-cover rounded-lg" data-alt="A close-up shot of an artisan meticulously setting a diamond into a gold ring." style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuDTX3e-9D6U3L3dFVNCUFcJs4mYdpfweystdM_olypjoVrTJVfZxE4YWGw5M527AV3dGlcH2NpXh_5dXL1h_wVGgzitqcjWXmbeqcj0TGr1L_gt9AknPOAlGuc1O1FcMHwecaZWCmtCh99CPhkzrHtCsSY4GL7GoY5aqbhox0F2jewPl0MXkkg6DXs6nP38RqeCPQTBeLrrjb0p-xAQXEsSssG5_tR0iIXeTXQfdBfrApv_BTbIW_MslRoxU_Br3AICJxOHVLckww")' }}></div>
-                                            <div className="w-full bg-center bg-no-repeat bg-cover rounded-lg" data-alt="An elegant, modern Gold House storefront with large glass windows." style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuDfQtm4Lb6_-BFo_J7tPQPPfEVToERSD7s7NYy0Tj5F356IucrkodiTFOj-B9tREnx9YPqRVuQz4VyZ8x6lL9Bo7hzI2sFkuM9CoSf7CtCMnwnwmSErr_S8btrYmT-kYLUZvo1xn_Jpg917BFWj7U7W0ojoYUJmOQmTdiyveaiKLjLibAHl2UDJ5mvvXTWnv2hI_fFiWh0tqf3xvDnkJ3PBrNFAhowdUHpd4NEtB0HdDgBunevEperLuU24Ik4Bz5HAaRo00CQOhg")' }}></div>
+                                            <div className="w-full bg-center bg-no-repeat bg-cover rounded-lg" data-alt="An elegant, modern Gold House storefront with large glass windows." style={{ backgroundImage: `url(${Img1})` }}></div>
                                         </div>
                                     </div>
                                 </div>

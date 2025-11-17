@@ -10,7 +10,7 @@ export const contactService = {
         return response.data.result
     },
     create: async (contact) => {
-        const response = await API.post("/api/contact", contact)
+        const response = await API.post("/api/contact/", contact)
         return response.data
     },
     delete: async (id) => {

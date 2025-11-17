@@ -74,7 +74,7 @@ export default function Contact() {
                             <div className="flex flex-wrap justify-between gap-10 p-4">
                                 <div className="flex flex-col gap-8 flex-1 min-w-[300px]">
                                     <div className="flex flex-col gap-3">
-                                        <p className="font-display text-[#181411] dark:text-white text-4xl lg:text-5xl font-black leading-tight tracking-[-0.033em]">{textMap['CONTACT_US']}</p>
+                                        <h1 className="font-display text-[#181411] dark:text-white text-4xl lg:text-5xl font-black leading-tight tracking-[-0.033em]">{textMap['CONTACT_US']}</h1>
                                         <p className="font-sans text-[#857360] dark:text-[#a19385] text-base font-normal leading-normal">{textMap['CONTACT_DESCRIPTION']}</p>
                                     </div>
                                     <div className="space-y-4">

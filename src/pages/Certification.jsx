@@ -60,7 +60,7 @@ export default function Certification() {
                             <Navbar />
                             <div className="flex flex-wrap justify-between gap-3 p-4 mt-16 items-center">
                                 <div className="flex flex-col gap-3">
-                                    <p className="font-display text-[#181411] dark:text-white text-4xl lg:text-5xl font-black  tracking-[-0.033em]">{textMap['CERTIFICATIONS_TITLE']}</p>
+                                    <h1 className="font-display text-[#181411] dark:text-white text-4xl lg:text-5xl font-black  tracking-[-0.033em]">{textMap['CERTIFICATIONS_TITLE']}</h1>
                                     <p className="font-sans text-[#857360] dark:text-[#a19385] text-base font-normal leading-normal">{textMap['CERTIFICATIONS_DESCRIPTION']}</p>
                                 </div>
                             </div>
