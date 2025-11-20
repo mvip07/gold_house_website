@@ -1,0 +1,60 @@
+User-agent: *
+Allow: /
+
+# Block sensitive areas
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /private/
+Disallow: /backup/
+Disallow: /logs/
+Disallow: /cgi-bin/
+
+# Prevent indexing of query pages
+Disallow: /*?s=
+Disallow: /*?search=
+Disallow: /*?filter=
+Disallow: /*?sort=
+
+# Prevent indexing of auth pages
+Disallow: /login
+Disallow: /register
+Disallow: /signin
+Disallow: /signup
+
+# Prevent indexing of shopping flow
+Disallow: /cart
+Disallow: /checkout
+Disallow: /order
+Disallow: /account
+Disallow: /my-account
+
+# Sitemap
+Sitemap: https://www.goldhouseeee.uz/sitemap.xml
+
+# Image indexing
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /uploads/
+
+# Good bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+# Bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
