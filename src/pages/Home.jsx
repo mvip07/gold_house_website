@@ -185,7 +185,7 @@ export default function Home() {
                                 <div className="relative flex flex-col gap-12">
                                     <div className="md:flex items-center md:gap-8 w-full">
                                         <div className="md:w-1/2 md:text-right md:pr-8">
-                                            <p className="font-display text-3xl font-bold text-accent">1975–1995</p>
+                                            <p className="font-display text-3xl font-bold text-accent">1971–1995</p>
                                             <h3 className="font-display text-2xl font-semibold my-2 text-text-dark dark:text-text-light">{textMap['HOME_PAGE_STORY_1_TITLE']}</h3>
                                             <p className="font-sans text-lg text-gray-700 dark:text-gray-300">{textMap['HOME_PAGE_STORY_1_DESCRIPTION']}</p>
                                         </div>
