@@ -89,7 +89,7 @@ export default function Story() {
                                         <div className="relative flex items-center group">
                                             <div className="hidden md:block w-1/2 pr-8">
                                                 <div className="bg-white dark:bg-background-dark p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                                                    <h3 className="text-primary text-2xl font-bold font-display">1975</h3>
+                                                    <h3 className="text-primary text-2xl font-bold font-display">1971</h3>
                                                     <h4 className="text-[#181411] dark:text-white text-xl font-semibold mt-2 font-display">{textMap['STORY_PAGE_VISION_TITLE']}</h4>
                                                     <p className="text-gray-600 dark:text-gray-400 mt-2 font-sans">{textMap['STORY_PAGE_VISION_DESCRIPTION']}</p>
                                                 </div>
@@ -101,7 +101,7 @@ export default function Story() {
                                                 <div className="rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
                                                     <img className="w-full h-64 object-cover" alt="Founder's vintage workshop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBilVUQ9s7u_9tTZ6Vz4J__VSGke0vaQizjXWKNDHksRKhfztWmg-qAmeisE8L2rpc26NNOKsHRHK83-zy6EQzDA_d8WTnVnmjn_vFOJ8a6-ImxFKIaEOMpdohrclPXqKciS3MChPFAAjhGf3UrS3R3UoS82KG4iCYdXEKgFIh5sN8l9oyaisNTU2YZ1MVO15TXH8zzMbIc6zwrQvArpPh5KomHHZ-HFVTTOihiNE3CYqed84w1zT80kilYyltgl7k324P-EOh7wQ" />
                                                     <div className="md:hidden bg-white dark:bg-background-dark p-4">
-                                                        <h3 className="text-primary text-xl font-bold font-display">1975</h3>
+                                                        <h3 className="text-primary text-xl font-bold font-display">1971</h3>
                                                         <h4 className="text-[#181411] dark:text-white text-lg font-semibold mt-1 font-display">{textMap['STORY_PAGE_VISION_TITLE']}</h4>
                                                         <p className="text-gray-600 dark:text-gray-400 mt-1 font-sans text-sm">{textMap['STORY_PAGE_VISION_DESCRIPTION']}</p>
                                                     </div>
