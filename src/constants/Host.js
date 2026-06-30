@@ -1,1 +1,1 @@
-export const HOST = "https://soliq-plus.uz"
+export const HOST = "https://eduskills.uz"
